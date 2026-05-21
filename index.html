@@ -12,11 +12,13 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
+            position: relative;
         }
         .header {
             text-align: center;
@@ -44,6 +46,8 @@
             gap: 15px;
             margin-top: 30px;
             flex-wrap: wrap;
+            position: relative;
+            min-height: 60px;
         }
         .btn {
             display: inline-block;
@@ -53,6 +57,8 @@
             font-weight: bold;
             font-size: 16px;
             transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
         }
         .btn-primary {
             background-color: #ff4a4a;
@@ -64,11 +70,20 @@
         }
         .btn-secondary {
             border: 2px solid #e1e1e6;
+            background: transparent;
             color: #e1e1e6;
         }
         .btn-secondary:hover {
             background-color: #e1e1e6;
             color: #0b0b0c;
+        }
+        /* Botão brincalhão que foge */
+        #troll-btn {
+            background-color: #ffaa00;
+            color: #0b0b0c;
+            position: relative;
+            transition: all 0.1s ease-in-out;
+            z-index: 10;
         }
         h2 {
             color: #ff4a4a;
@@ -90,6 +105,24 @@
         .manifesto-box strong {
             color: #ffaa00;
         }
+        
+        /* Secção Interativa do Medidor Rekt */
+        .rekt-meter-box {
+            background-color: #141419;
+            border: 2px dashed #ff4a4a;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        #rekt-result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffaa00;
+            min-height: 28px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -157,7 +190,15 @@
 
         <div class="cta-buttons">
             <a href="YOUR_PUMP_FUN_LINK" class="btn btn-primary" target="_blank">Buy $LIQUD on Pump.fun</a>
-            <a href="YOUR_TELEGRAM_LINK" class="btn btn-secondary" target="_blank">Join Telegram of Despair</a>
+            <a href="YOUR_TELEGRAM_LINK" class="btn btn-secondary" target="_blank">Join Telegram</a>
+            <button id="troll-btn" class="btn">Win Free Money</button>
+        </div>
+
+        <div class="rekt-meter-box">
+            <h3>📉 Are you Rekt? Test Your Wallet</h3>
+            <p>Our decentralized algorithm analyzes your historical bad financial decisions.</p>
+            <button class="btn btn-primary" onclick="checkRektLevel()">Scan My Wallet Level</button>
+            <div id="rekt-result"></div>
         </div>
 
         <h2>The Manifesto</h2>
@@ -217,5 +258,45 @@
             <p>&copy; 2026 $LIQUD Token. Built by and for rekt traders. No financial utility. Do not invest your lunch money.</p>
         </div>
     </div>
+
+    <script>
+        // Função para o Medidor Rekt
+        function checkRektLevel() {
+            const resultDiv = document.getElementById('rekt-result');
+            resultDiv.innerHTML = "Scanning your transaction history... ⏳";
+            
+            const outcomes = [
+                "🚨 99.9% REKT: You currently live in a wooden barrel. Welcome leader!",
+                "📉 85% REKT: You bought the exact top of 4 different memecoins today.",
+                "🙀 70% REKT: Your cats are looking at you with disappointment.",
+                "🕯️ 95% REKT: Destroyed by a $0.0001 scam wick on 100x leverage.",
+                "🛑 100% REKT: You traded your lunch money. Absolute legend.",
+                "🤷‍♂️ 50% REKT: Not fully broke yet, but you are getting there fast."
+            ];
+
+            setTimeout(() => {
+                const randomChoice = outcomes[Math.floor(Math.random() * outcomes.length)];
+                resultDiv.innerHTML = randomChoice;
+            }, 1200);
+        }
+
+        // Função para o Botão Brincalhão que Foge (Funciona em Rato e Toques Rápidos)
+        const trollBtn = document.getElementById('troll-btn');
+        
+        function moveButton() {
+            const x = Math.random() * (window.innerWidth - trollBtn.offsetWidth - 40);
+            const y = Math.random() * (window.innerHeight - trollBtn.offsetHeight - 40);
+            
+            trollBtn.style.position = 'fixed';
+            trollBtn.style.left = x + 'px';
+            trollBtn.style.top = y + 'px';
+        }
+
+        trollBtn.addEventListener('mouseover', moveButton);
+        trollBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            moveButton();
+        });
+    </script>
 </body>
 </html>
