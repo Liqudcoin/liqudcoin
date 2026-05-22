@@ -50,7 +50,10 @@
             min-height: 60px;
         }
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             padding: 12px 30px;
             border-radius: 8px;
             text-decoration: none;
@@ -76,6 +79,11 @@
         .btn-secondary:hover {
             background-color: #e1e1e6;
             color: #0b0b0c;
+        }
+        .x-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
         }
         /* Botão brincalhão que foge */
         #troll-btn {
@@ -189,8 +197,15 @@
         </div>
 
         <div class="cta-buttons">
-            <a href="YOUR_PUMP_FUN_LINK" class="btn btn-primary" target="_blank">Buy $LIQUD on Pump.fun</a>
-            <a href="YOUR_TELEGRAM_LINK" class="btn btn-secondary" target="_blank">Join Telegram</a>
+            <a href="https://four.meme/en" class="btn btn-primary" target="_blank">Buy $LIQUD on Four.meme</a>
+            
+            <a href="https://x.com/liqudCoin" class="btn btn-secondary" target="_blank">
+                <svg class="x-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                </svg>
+                Follow on Twitter/X
+            </a>
+            
             <button id="troll-btn" class="btn">Win Free Money</button>
         </div>
 
@@ -230,12 +245,12 @@
                 <tr>
                     <td><strong>Launch Meta</strong></td>
                     <td>100% Fair Launch</td>
-                    <td>Launched via Pump.fun. No free team allocations.</td>
+                    <td>Launched via Four.meme. No free team allocations.</td>
                 </tr>
                 <tr>
                     <td><strong>Security</strong></td>
                     <td>Liquidity Burned</td>
-                    <td>Liquidity automatically locked and burned upon Raydium graduation.</td>
+                    <td>Liquidity automatically locked and burned upon PancakeSwap graduation.</td>
                 </tr>
             </tbody>
         </table>
@@ -248,10 +263,10 @@
 
         <h2>How to Buy (A Guide for Financial Noobs)</h2>
         <ol>
-            <li><strong>Prepare Your Barrel:</strong> Download Phantom or Solflare wallet and load it up with some Solana ($SOL).</li>
-            <li><strong>Visit Pump.fun:</strong> Head over to the platform using the official link at the top of this page.</li>
-            <li><strong>Swap SOL for LQD:</strong> Input the amount of Solana you are willing to watch fluctuate and hit buy.</li>
-            <li><strong>Cry on Telegram:</strong> Join our group to post your loss-portfolio screenshots and enjoy premium cat memes.</li>
+            <li><strong>Prepare Your Barrel:</strong> Download Metamask or Trust Wallet and load it up with some Binance Coin ($BNB) on the BSC network.</li>
+            <li><strong>Visit Four.meme:</strong> Head over to the platform using the official link at the top of this page.</li>
+            <li><strong>Swap BNB for LQD:</strong> Input the amount of BNB you are willing to watch fluctuate and hit buy.</li>
+            <li><strong>Join the Crew on Twitter:</strong> Follow our official X account to post your loss-portfolio screenshots and enjoy premium cat memes.</li>
         </ol>
 
         <div class="footer">
@@ -280,7 +295,7 @@
             }, 1200);
         }
 
-        // Função para o Botão Brincalhão que Foge (Funciona em Rato e Toques Rápidos)
+        // Função para o Botão Brincalhão que Foge
         const trollBtn = document.getElementById('troll-btn');
         
         function moveButton() {
@@ -300,3 +315,6 @@
     </script>
 </body>
 </html>
+}
+
+    
