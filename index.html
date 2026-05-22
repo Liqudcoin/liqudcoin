@@ -14,6 +14,17 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
+        /* Contador de Liquidações no Topo */
+        .live-counter {
+            background-color: #ff4a4a;
+            color: #ffffff;
+            text-align: center;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 10px rgba(255, 74, 74, 0.3);
+        }
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -122,6 +133,14 @@
             padding: 30px;
             text-align: center;
             margin: 40px 0;
+            transition: background-color 0.3s;
+        }
+        .rekt-alarm-active {
+            animation: flashRed 0.5s infinite alternate;
+        }
+        @keyframes flashRed {
+            from { background-color: #141419; }
+            to { background-color: #4a0000; }
         }
         #rekt-result {
             margin-top: 20px;
@@ -179,6 +198,11 @@
     </style>
 </head>
 <body>
+
+    <div class="live-counter">
+        ⚠️ LIVE STEALTH FEED: <span id="liquidation-count">3,421,890</span> TRADERS LIQUIDATED TODAY
+    </div>
+
     <div class="container">
         <div class="header">
             <h1>$LIQUD</h1>
@@ -209,7 +233,7 @@
             <button id="troll-btn" class="btn">Win Free Money</button>
         </div>
 
-        <div class="rekt-meter-box">
+        <div class="rekt-meter-box" id="meter-box">
             <h3>📉 Are you Rekt? Test Your Wallet</h3>
             <p>Our decentralized algorithm analyzes your historical bad financial decisions.</p>
             <button class="btn btn-primary" onclick="checkRektLevel()">Scan My Wallet Level</button>
@@ -275,27 +299,68 @@
     </div>
 
     <script>
-        // Função para o Medidor Rekt
+        // 1. Contador Falso Dinâmico que sobe sem parar
+        let count = 3421890;
+        setInterval(() => {
+            count += Math.floor(Math.random() * 3) + 1;
+            document.getElementById('liquidation-count').innerText = count.toLocaleString();
+        }, 1500);
+
+        // 2. Função de Sintetizador de Áudio (Sirene do Azar)
+        function playSiren() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                
+                oscillator.type = 'sawtooth';
+                oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); // Frequência base
+                
+                // Efeito de oscilação da sirene (sobe e desce)
+                oscillator.frequency.linearRampToValueAtTime(880, audioCtx.currentTime + 0.3);
+                oscillator.frequency.linearRampToValueAtTime(440, audioCtx.currentTime + 0.6);
+                oscillator.frequency.linearRampToValueAtTime(880, audioCtx.currentTime + 0.9);
+                oscillator.frequency.linearRampToValueAtTime(440, audioCtx.currentTime + 1.2);
+                
+                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime); // Volume controlado
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1.2); // Fade out
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                oscillator.start();
+                oscillator.stop(audioCtx.currentTime + 1.2);
+            } catch(e) {
+                console.log("Audio block prevented or not supported.");
+            }
+        }
+
+        // 3. Medidor Rekt com Alarme Visual e Sonoro
         function checkRektLevel() {
             const resultDiv = document.getElementById('rekt-result');
-            resultDiv.innerHTML = "Scanning your transaction history... ⏳";
+            const meterBox = document.getElementById('meter-box');
+            
+            resultDiv.innerHTML = "Scanning your wallet address bad luck... ⏳";
+            meterBox.classList.remove('rekt-alarm-active');
             
             const outcomes = [
                 "🚨 99.9% REKT: You currently live in a wooden barrel. Welcome leader!",
                 "📉 85% REKT: You bought the exact top of 4 different memecoins today.",
-                "🙀 70% REKT: Your cats are looking at you with disappointment.",
-                "🕯️ 95% REKT: Destroyed by a $0.0001 scam wick on 100x leverage.",
-                "🛑 100% REKT: You traded your lunch money. Absolute legend.",
-                "🤷‍♂️ 50% REKT: Not fully broke yet, but you are getting there fast."
+                "🙀 70% REKT: Your cats are officially planning to look for a better owner.",
+                "🕯️ 95% REKT: Absolutely vaporized by a $0.0001 scam wick on 100x leverage.",
+                "🛑 100% REKT: You traded your actual lunch money. Absolute legend.",
+                "🤷‍♂️ 50% REKT: Not completely broke yet, but you are getting there fast."
             ];
 
             setTimeout(() => {
                 const randomChoice = outcomes[Math.floor(Math.random() * outcomes.length)];
                 resultDiv.innerHTML = randomChoice;
+                meterBox.classList.add('rekt-alarm-active');
+                playSiren(); // Toca a sirene quando dá o resultado do azar
             }, 1200);
         }
 
-        // Função para o Botão Brincalhão que Foge
+        // 4. O Botão Troll Esquivo (Foge do Clique)
         const trollBtn = document.getElementById('troll-btn');
         
         function moveButton() {
@@ -312,9 +377,11 @@
             e.preventDefault();
             moveButton();
         });
+
+        // Caso o utilizador seja um ninja e consiga clicar no botão fugitivo:
+        trollBtn.addEventListener('click', () => {
+            alert("❌ ERROR: Your connected wallet balance is too low to receive free money. Go buy $LQD instead!");
+        });
     </script>
 </body>
 </html>
-}
-
-    
