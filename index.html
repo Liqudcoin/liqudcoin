@@ -13,24 +13,29 @@
         body {
             background-color: #0b0b0c;
             color: #ffffff;
-            font-family: 'Impact', Arial, sans-serif;
+            font-family: Arial, sans-serif;
             padding-top: 60px;
             text-align: center;
-            transition: transform 0.1s;
+            transition: transform 0.1s, background-color 0.1s;
         }
 
-        /* Efeito Terramoto para quando ficas Rekt */
+        /* Animação de Flash Vermelho no Fundo */
+        .flash-red {
+            background-color: #4a0000 !important;
+        }
+
+        /* Efeito Terramoto para o Choque da Liquidação */
         .shake {
             animation: shakeScreen 0.3s cubic-bezier(.36,.07,.19,.97) both;
         }
         @keyframes shakeScreen {
-            10%, 90% { transform: translate3d(-2px, 0, 0); }
-            25%, 75% { transform: translate3d(4px, 0, 0); }
-            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
-            40%, 60% { transform: translate3d(6px, 0, 0); }
+            10%, 90% { transform: translate3d(-3px, 0, 0); }
+            25%, 75% { transform: translate3d(5px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-7px, 0, 0); }
+            40%, 60% { transform: translate3d(7px, 0, 0); }
         }
 
-        /* Marquise Superior Néon */
+        /* Marquise Superior Néon Vibrante */
         .marquee-container {
             background-color: #990000;
             border-bottom: 3px solid #ff4a4a;
@@ -43,7 +48,7 @@
             width: 100%;
             z-index: 1000;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.5);
         }
         .marquee-content {
             display: inline-block;
@@ -61,64 +66,82 @@
             padding: 10px 15px;
         }
 
-        /* Banner Principal de Fogo */
+        /* Banner Superior Premium */
         .fire-banner {
-            background: linear-gradient(180deg, #ffaa00 0%, #990000 100%);
-            border-radius: 12px;
+            background: linear-gradient(180deg, #141419 0%, #000000 100%);
+            border-radius: 16px;
             border: 3px solid #ff4a4a;
-            padding: 20px 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 15px #ff4a4a;
+            padding: 30px 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(255, 74, 74, 0.3);
         }
+        
+        /* LETRA DO $LIQUD MELHORADA (Néon Cyberpunk Pulsa) */
         .fire-banner h1 {
-            font-size: 50px;
-            letter-spacing: 2px;
-            color: #ffffff;
-            text-shadow: 2px 2px 0px #000;
+            font-family: 'Impact', Charcoal, sans-serif;
+            font-size: 55px;
+            letter-spacing: 5px;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #ff4a4a, 0 0 20px #ff4a4a, 0 0 30px #ff0000;
+            animation: neonPulse 1.5s infinite alternate;
+        }
+        @keyframes neonPulse {
+            from { text-shadow: 0 0 10px #ff4a4a, 0 0 20px #ff4a4a, 0 0 30px #ff0000; }
+            to { text-shadow: 0 0 5px #ff4a4a, 0 0 10px #ff4a4a, 0 0 15px #990000; transform: scale(0.98); }
         }
 
-        /* Zona Principal Interativa (O Gato e a Máquina de Cope) */
+        .fire-banner p {
+            font-size: 13px;
+            color: #ffff00;
+            margin-top: 8px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Zona Interativa da Memecoin */
         .interactive-box {
             background: rgba(20, 20, 25, 0.95);
             border: 4px solid #ffaa00;
             border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 25px 20px;
+            margin-bottom: 25px;
             box-shadow: 0 0 20px rgba(255, 170, 0, 0.3);
         }
         .logo-img {
             width: 100%;
-            max-width: 180px;
+            max-width: 190px;
             height: auto;
             border-radius: 50%;
             border: 5px solid #ff4a4a;
             margin-bottom: 15px;
+            box-shadow: 0 0 15px rgba(255, 74, 74, 0.4);
         }
 
-        /* Caixa de Resposta Dinâmica */
         .cope-display {
             background-color: #0b0b0c;
             border: 2px dashed #ff4a4a;
             border-radius: 10px;
             padding: 15px;
             margin: 15px 0;
-            min-height: 70px;
+            min-height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: Arial, sans-serif;
             font-size: 15px;
             font-weight: bold;
             color: #ffff00;
+            line-height: 1.4;
         }
 
-        /* Botões Estilo Casino */
+        /* Botões de Ação Dinâmicos */
         .action-btn {
             display: block;
             width: 100%;
             padding: 16px;
             border-radius: 12px;
             text-decoration: none;
+            font-family: 'Impact', Arial, sans-serif;
             font-size: 18px;
             font-weight: bold;
             text-transform: uppercase;
@@ -126,6 +149,7 @@
             border: none;
             cursor: pointer;
             margin-bottom: 12px;
+            letter-spacing: 1px;
         }
         .btn-generator {
             background: linear-gradient(135deg, #ffaa00, #ff4a4a);
@@ -141,6 +165,7 @@
             background-color: #001122;
             color: #00ffff;
             border: 3px solid #00ffff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
         }
         .btn-troll {
             background: linear-gradient(180deg, #ff007f, #800040);
@@ -148,34 +173,40 @@
             border: 2px solid #ff007f;
         }
 
-        /* Manifesto e Informações */
+        /* Painéis de Conteúdo Estilizados */
         .info-card {
             background-color: #141419;
             border: 2px solid #29292e;
             border-radius: 12px;
-            padding: 20px;
+            padding: 22px;
             margin-bottom: 15px;
             text-align: left;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         .info-card h4 {
-            font-size: 22px;
+            font-family: 'Impact', Arial, sans-serif;
+            font-size: 24px;
             color: #ff4a4a;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .info-card p {
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            line-height: 1.5;
-            color: #d1d1d6;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #e1e1e6;
+        }
+        .info-card strong {
+            color: #ffaa00;
         }
 
         .footer {
             font-size: 11px;
             color: #7c7c8a;
-            margin-top: 30px;
+            margin-top: 35px;
             border-top: 1px solid #29292e;
-            padding-top: 15px;
+            padding-top: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -183,7 +214,7 @@
 
     <div class="marquee-container">
         <div class="marquee-content">
-            🚨 REKT FEED: <span id="liquidation-count">3,421,890</span> DEGENS VAPORIZED TODAY &bull; STOP TRADING ALONE, COPE TOGETHER &bull; $LQD LAUNCHING ON FOUR.MEME &bull; 🚨 REKT FEED: <span id="liquidation-count2">3,421,890</span> DEGENS VAPORIZED TODAY &bull;
+            ⚠️ REKT FEED: <span id="liquidation-count">3,421,890</span> DEGENS VAPORIZED TODAY &bull; MAXIMUM CHAOS METRIC ACTIVE &bull; $LQD LAUNCHING LIVE ON FOUR.MEME &bull; ⚠️ REKT FEED: <span id="liquidation-count2">3,421,890</span> DEGENS VAPORIZED TODAY &bull;
         </div>
     </div>
 
@@ -191,16 +222,16 @@
         
         <div class="fire-banner">
             <h1>$LIQUD</h1>
-            <p>"The market might go up, the market might go down, but we get liquidated anyway."</p>
+            <p>(Ticker: LQD)</p>
         </div>
 
         <div class="interactive-box">
             <img src="1779396908205.png" alt="$LIQUD Logo" class="logo-img">
             
-            <h3 style="color: #ffaa00; text-transform: uppercase; font-size: 22px;">🔮 THE COPE GENERATOR</h3>
-            <p style="font-family: Arial, sans-serif; font-size: 12px; color: #aaa; margin-top: 2px;">Lost everything on 100x leverage? Generate your institutional excuse below:</p>
+            <h3 style="color: #ffaa00; font-family: 'Impact', Arial; font-size: 24px; letter-spacing: 1px;">🔮 THE COPE GENERATOR</h3>
+            <p style="font-size: 12px; color: #aaa; margin-top: 4px; font-weight: bold;">Vaporized by the orderbook? Get your official institutional excuse:</p>
             
-            <div class="cope-display" id="copeOutput">Click the button below to claim your liquidation verdict...</div>
+            <div class="cope-display" id="copeOutput">Click the turbo button below to scan your market bad luck...</div>
             
             <button class="action-btn btn-generator" onclick="generateDeDegenCope()">⚡ GENERATE COPE VERDICT ⚡</button>
         </div>
@@ -214,24 +245,25 @@
         <div class="info-card">
             <h4>The Manifesto</h4>
             <p>
-                $LIQUD is the official inverse indicator for retail traders. You wait weeks for an entry, use maximum leverage, and get targeted by a 1-second scam wick. Relax, stop crying, and join the barrel squad.
+                "You researched the project for weeks. You read the whitepaper. You drew perfect support lines and Fibonacci retracements on the chart. You waited for the absolute perfect entry. You clicked buy with 100x leverage... and exactly 3 seconds later, you got liquidated by a $0.0001 wick.<br><br>
+                You are not alone. We are the official inverse indicator. <strong>$LIQUD</strong> doesn't promise the Moon. It just promises that if you go broke, you'll do it in good company and with a smile on your face."
             </p>
         </div>
 
         <div class="info-card">
             <h4>Tokenomics</h4>
-            <p style="color: #00ff66; font-weight: bold; font-family: Arial; font-size: 14px;">&bull; Total Supply: 1,000,000,000 LQD</p>
-            <p style="color: #ff007f; font-weight: bold; font-family: Arial; font-size: 14px; margin-top: 5px;">&bull; Buy/Sell Tax: 0%</p>
+            <p style="color: #00ff66; font-weight: bold; font-size: 15px;">&bull; Total Supply: 1,000,000,000 LQD</p>
+            <p style="color: #ff007f; font-weight: bold; font-size: 15px; margin-top: 6px;">&bull; Buy / Sell Tax: 0% (Pure Fair Launch)</p>
         </div>
 
         <div class="footer">
-            <p>NO FINANCIAL ADVICE. STRICTLY FOR THE MEMES. BY DEGENS FOR DEGENS.</p>
+            <p>NO FINANCIAL ADVICE. STIMULATED STRICTLY FOR THE LAUGHS AND CAT MEMES. &copy; 2026</p>
         </div>
 
     </div>
 
     <script>
-        // Contador Real em Movimento
+        // Sincronização do Contador
         let liveCount = 3421890;
         setInterval(() => {
             liveCount += Math.floor(Math.random() * 4) + 1;
@@ -239,46 +271,46 @@
             document.getElementById('liquidation-count2').innerText = liveCount.toLocaleString();
         }, 800);
 
-        // Mecânica Inovadora e Divertida: O Cope Generator com Efeito Tremor
+        // Interatividade Melhorada: Choque Triplo (Shake + Flash + Som + Texto)
         function generateDeDegenCope() {
             const output = document.getElementById('copeOutput');
-            output.innerHTML = "Consulting the market makers... ⏳";
+            output.innerHTML = "Calculating the depth of your bankruptcy... ⏳";
             
-            // Adiciona a classe de tremor ao corpo da página
-            document.body.classList.add('shake');
+            // Ativa Terramoto e Alarme Visual Vermelho de Emergência
+            document.body.classList.add('shake', 'flash-red');
             
-            // Toca um bipe sonoro de erro retro pelo telemóvel
+            // Sintetizador Nativo para Áudio Retro de Impacto
             try {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
                 osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(150, audioCtx.currentTime); // Som grave de erro/bomba
-                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+                osc.frequency.setValueAtTime(140, audioCtx.currentTime); 
+                gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
                 osc.start();
-                osc.stop(audioCtx.currentTime + 0.3);
+                osc.stop(audioCtx.currentTime + 0.35);
             } catch(e) {}
 
             const excuses = [
                 "📉 REKT: 'It wasn't a mistake, it was a market maker stop-loss hunt targeting my exact $32 balance.'",
-                "🙀 CAT REKT: Your black cat walked over the keyboard and clicked 100x Market Buy. Not your fault.",
-                "🐳 WHALE ALERT: A billionaire wallet sold $10M worth of tokens just to clear your $15 position.",
-                "🛢️ BARREL ENTRY: You bought the exact local top perfectly. The chart inverted right after. Moving into the barrel.",
-                "🛑 COPE LEVEL 99: 'I'm not down 95%, I am just dollar-cost-averaging from the stratosphere.'",
-                "👻 CENTRALIZED EXPLOIT: 'The exchange lag stole my margin. Sending an angry tweet right now.'"
+                "🙀 CAT REKT: Your cat walked over the phone screen and clicked 100x Market Buy. Pure bad luck.",
+                "🐳 WHALE PLOT: A tier-1 whale wallet dumped $10M just to trigger your tiny $20 liquidation node.",
+                "🛢️ BARREL META: You executed a perfect entry on the local top. The chart inverted by spite. Welcome to the barrel.",
+                "🛑 COPE LEVEL 99: 'I am not down 98%, my investment is just performing an inverse retracement before the bounce.'",
+                "👻 EXCHANGE GLITCH: 'The app froze right when I wanted to close the position. Classic manipulation.'"
             ];
 
             setTimeout(() => {
-                // Remove o tremor para poder ser ativado novamente no próximo clique
-                document.body.classList.remove('shake');
+                // Desativa os efeitos visuais para estarem prontos para o próximo clique
+                document.body.classList.remove('shake', 'flash-red');
                 output.innerHTML = excuses[Math.floor(Math.random() * excuses.length)];
-            }, 500);
+            }, 450);
         }
 
-        // Botão Troll que foge do polegar no telemóvel
+        // Botão Fuga de Polegar
         const trollBtn = document.getElementById('evasiveTrollBtn');
         trollBtn.addEventListener('mouseover', relocateButton);
         trollBtn.addEventListener('touchstart', function(e) {
@@ -298,7 +330,7 @@
             trollBtn.style.zIndex = "9999";
         }
         trollBtn.addEventListener('click', () => {
-            alert("❌ ERROR: Your wallet balance is too low to handle free money. Buy $LQD!");
+            alert("❌ EXPLOIT CAUGHT: Your wallet balance is empty. Buy $LQD first!");
         });
     </script>
 </body>
