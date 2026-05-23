@@ -76,19 +76,20 @@
             box-shadow: 0 0 20px rgba(255, 74, 74, 0.3);
         }
         
-        /* LETRA DO $LIQUD MELHORADA (Néon Cyberpunk Pulsa) */
+        /* TÍTULO $LIQUD ULTRA DIVERTIDO (Néon Degen + Tremor) */
         .fire-banner h1 {
             font-family: 'Impact', Charcoal, sans-serif;
-            font-size: 55px;
-            letter-spacing: 5px;
+            font-size: 52px;
+            letter-spacing: 3px;
             color: #fff;
             text-transform: uppercase;
-            text-shadow: 0 0 10px #ff4a4a, 0 0 20px #ff4a4a, 0 0 30px #ff0000;
-            animation: neonPulse 1.5s infinite alternate;
+            text-shadow: 0 0 10px #ff4a4a, 0 0 20px #ff0000;
+            animation: degenPulse 0.8s infinite alternate;
+            display: inline-block;
         }
-        @keyframes neonPulse {
-            from { text-shadow: 0 0 10px #ff4a4a, 0 0 20px #ff4a4a, 0 0 30px #ff0000; }
-            to { text-shadow: 0 0 5px #ff4a4a, 0 0 10px #ff4a4a, 0 0 15px #990000; transform: scale(0.98); }
+        @keyframes degenPulse {
+            0% { text-shadow: 0 0 10px #ff4a4a, 0 0 20px #ff0000; transform: rotate(-1deg) scale(1); }
+            100% { text-shadow: 0 0 20px #ff007f, 0 0 30px #ff4a4a; transform: rotate(1deg) scale(1.03); }
         }
 
         .fire-banner p {
@@ -156,6 +157,7 @@
             border: 2px solid #fff;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
+        /* CORRIGIDO PARA FOUR.MEME */
         .btn-four {
             background-color: #e60000;
             border: 3px solid #ffff00;
@@ -221,7 +223,7 @@
     <div class="main-wrapper">
         
         <div class="fire-banner">
-            <h1>$LIQUD</h1>
+            <h1>📉 $LIQUD 📉</h1>
             <p>(Ticker: LQD)</p>
         </div>
 
@@ -237,7 +239,7 @@
         </div>
 
         <div style="margin-bottom: 25px;">
-            <a href="https://four.meme/en" class="action-btn btn-four" target="_blank">$LIQUD on Four.mom</a>
+            <a href="https://four.meme/en" class="action-btn btn-four" target="_blank">$LIQUD on Four.meme</a>
             <a href="https://x.com/liqudCoin" class="action-btn btn-x" target="_blank">Follow on Twitter/X</a>
             <button class="action-btn btn-troll" id="evasiveTrollBtn">Win Free Money</button>
         </div>
@@ -320,18 +322,4 @@
 
         function relocateButton() {
             const maxX = window.innerWidth - trollBtn.offsetWidth - 30;
-            const maxY = window.innerHeight - trollBtn.offsetHeight - 30;
-            const newX = Math.max(15, Math.random() * maxX);
-            const newY = Math.max(60, Math.random() * maxY);
             
-            trollBtn.style.position = 'fixed';
-            trollBtn.style.left = newX + 'px';
-            trollBtn.style.top = newY + 'px';
-            trollBtn.style.zIndex = "9999";
-        }
-        trollBtn.addEventListener('click', () => {
-            alert("❌ EXPLOIT CAUGHT: Your wallet balance is empty. Buy $LQD first!");
-        });
-    </script>
-</body>
-</html>
