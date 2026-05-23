@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$LIQUD - The Official Token for the Liquidated</title>
+    <title>$LIQUD - Maximum Chaos Rekt Simulator - 1337 Online</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,22 +13,43 @@
             padding: 0;
             line-height: 1.6;
             overflow-x: hidden;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZjRhNGEiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTAgMGg0MHY0MEgwVjB6bTIwIDIwaDIwdjIwSDIWMjB6TTAgMjBoMjB2MjBIMFYyMHoyMCAwaDIwdjIwSDIwVjB6Ii8+PC9nPjwvZz48L3N2Zz4=');
         }
-        /* Contador de Liquidações no Topo */
-        .live-counter {
+        /* Marquise de Liquidações em Movimento */
+        .live-counter-marquee {
             background-color: #ff4a4a;
             color: #ffffff;
             text-align: center;
-            padding: 8px;
+            padding: 8px 0;
             font-weight: bold;
             font-size: 14px;
             letter-spacing: 1px;
             box-shadow: 0 2px 10px rgba(255, 74, 74, 0.3);
+            white-space: nowrap;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .live-counter-marquee span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 30s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+        .live-counter-marquee span span#liquidation-count {
+            color: #ffff00;
+            font-size: 16px;
+            text-shadow: 0 0 5px #ffff00;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 80px 20px 40px 20px; /* Ajuste para a marquise fixa */
             position: relative;
         }
         .header {
@@ -38,18 +59,32 @@
             border-radius: 12px;
             margin-bottom: 40px;
             box-shadow: 0 4px 20px rgba(255, 74, 74, 0.2);
+            position: relative;
+            overflow: hidden;
         }
         .header h1 {
             color: #ffffff;
-            font-size: 36px;
+            font-size: 48px;
             margin: 0 0 10px 0;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 0 #990000, -1px -1px 0 #ffff00;
+            animation: glitchHeader 2s infinite alternate;
+        }
+        @keyframes glitchHeader {
+            0% { transform: skewX(0deg); }
+            5% { transform: skewX(2deg) scale(1.01); }
+            10% { transform: skewX(-2deg); text-shadow: -3px -3px 0 #990000, 1px 1px 0 #ffff00; }
+            15% { transform: skewX(0deg); }
+            100% { transform: skewX(0deg); }
         }
         .header p {
             color: #ffcccc;
-            font-size: 16px;
+            font-size: 18px;
             margin: 0;
             font-style: italic;
+            font-weight: bold;
         }
         .cta-buttons {
             display: flex;
@@ -58,149 +93,213 @@
             margin-top: 30px;
             flex-wrap: wrap;
             position: relative;
-            min-height: 60px;
+            min-height: 80px;
         }
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 12px 30px;
+            padding: 15px 40px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 16px;
-            transition: all 0.3s ease;
+            font-size: 18px;
+            transition: all 0.1s ease-in-out;
             cursor: pointer;
-            border: none;
+            border: 4px solid transparent;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-transform: uppercase;
+        }
+        .btn:active {
+            transform: scale(0.95);
         }
         .btn-primary {
             background-color: #ff4a4a;
             color: #ffffff;
+            box-shadow: 0 0 15px rgba(255, 74, 74, 0.6);
+            animation: jiggly 1.5s infinite alternate;
         }
         .btn-primary:hover {
             background-color: #ff2a2a;
-            box-shadow: 0 0 15px rgba(255, 74, 74, 0.6);
+            border-color: #ffff00;
+            box-shadow: 0 0 25px rgba(255, 74, 74, 0.9);
         }
         .btn-secondary {
-            border: 2px solid #e1e1e6;
+            border: 4px solid #e1e1e6;
             background: transparent;
             color: #e1e1e6;
+            animation: jiggly 1.7s infinite alternate-reverse;
         }
         .btn-secondary:hover {
             background-color: #e1e1e6;
             color: #0b0b0c;
+            border-color: #00ffff;
+            box-shadow: 0 0 25px rgba(225, 225, 230, 0.9);
         }
         .x-icon {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             fill: currentColor;
+            animation: pulseX 1s infinite alternate;
         }
-        /* Botão brincalhão que foge */
+        @keyframes pulseX {
+            from { transform: scale(1); opacity: 1; }
+            to { transform: scale(1.2); opacity: 0.7; }
+        }
         #troll-btn {
-            background-color: #ffaa00;
+            background-color: #ffff00;
             color: #0b0b0c;
             position: relative;
-            transition: all 0.1s ease-in-out;
             z-index: 10;
+            border-color: #ffaa00;
+            box-shadow: 0 0 15px rgba(255, 255, 0, 0.6);
+        }
+        @keyframes jiggly {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(2px, -2px) rotate(1deg); }
+            50% { transform: translate(-2px, 2px) rotate(-1deg); }
+            75% { transform: translate(2px, 2px) rotate(1deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
         }
         h2 {
             color: #ff4a4a;
-            font-size: 22px;
-            border-left: 4px solid #ff4a4a;
-            padding-left: 15px;
-            margin-top: 40px;
-            margin-bottom: 20px;
+            font-size: 28px;
+            border-left: 6px solid #ff4a4a;
+            padding-left: 20px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0 #000;
         }
         .manifesto-box {
             background-color: #141419;
-            border-right: 4px solid #ffaa00;
-            border-radius: 8px;
-            padding: 25px;
-            margin: 25px 0;
-            font-size: 16px;
+            border: 4px solid #ffaa00;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            font-size: 18px;
             font-style: italic;
+            position: relative;
+        }
+        .manifesto-box::after {
+            content: "📉";
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            font-size: 40px;
         }
         .manifesto-box strong {
             color: #ffaa00;
+            text-shadow: 0 0 5px #ffaa00;
         }
-        
-        /* Secção Interativa do Medidor Rekt */
         .rekt-meter-box {
             background-color: #141419;
-            border: 2px dashed #ff4a4a;
-            border-radius: 12px;
-            padding: 30px;
+            border: 6px dashed #ff4a4a;
+            border-radius: 16px;
+            padding: 40px;
             text-align: center;
-            margin: 40px 0;
-            transition: background-color 0.3s;
+            margin: 50px 0;
+            transition: all 0.2s ease-in-out;
+            position: relative;
         }
         .rekt-alarm-active {
-            animation: flashRed 0.5s infinite alternate;
+            animation: flashRed 0.3s infinite alternate;
+            border-style: solid;
+            box-shadow: 0 0 50px #ff0000;
+        }
+        .rekt-alarm-active::before {
+            content: "🚨";
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 60px;
+            animation: spinSiren 0.5s infinite linear;
+        }
+        @keyframes spinSiren {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to { transform: translateX(-50%) rotate(360deg); }
         }
         @keyframes flashRed {
-            from { background-color: #141419; }
-            to { background-color: #4a0000; }
+            from { background-color: #141419; border-color: #ff4a4a; }
+            to { background-color: #660000; border-color: #ffff00; }
         }
         #rekt-result {
-            margin-top: 20px;
-            font-size: 18px;
+            margin-top: 25px;
+            font-size: 22px;
             font-weight: bold;
-            color: #ffaa00;
-            min-height: 28px;
+            color: #ffff00;
+            min-height: 32px;
+            text-shadow: 0 0 10px #ffff00;
         }
-
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 25px 0;
+            margin: 30px 0;
+            background-color: #141419;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #29292e;
         }
         th, td {
-            padding: 12px 15px;
+            padding: 15px 20px;
             text-align: left;
             border-bottom: 1px solid #29292e;
         }
         th {
-            background-color: #141419;
+            background-color: #1a1a22;
             color: #ff4a4a;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-transform: uppercase;
         }
         tr:nth-child(even) {
             background-color: #0f0f12;
         }
+        tr:hover td {
+            background-color: #1f1f27;
+            color: #ffff00;
+        }
         .code-box {
             background-color: #141419;
-            border: 1px solid #29292e;
+            border: 2px solid #ff4a4a;
             border-radius: 8px;
-            padding: 15px;
+            padding: 20px;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 16px;
+            font-size: 18px;
             color: #00ffcc;
             word-break: break-all;
-            margin: 20px 0;
+            margin: 25px 0;
             text-align: center;
             font-weight: bold;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            box-shadow: inset 0 0 10px rgba(0, 255, 204, 0.3);
         }
         ol {
-            padding-left: 20px;
+            padding-left: 25px;
         }
         ol li {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            font-size: 17px;
+        }
+        ol li strong {
+            color: #ff4a4a;
         }
         .footer {
             text-align: center;
-            font-size: 12px;
+            font-size: 14px;
             color: #7c7c8a;
-            margin-top: 60px;
-            border-top: 1px solid #29292e;
-            padding-top: 20px;
+            margin-top: 70px;
+            border-top: 2px solid #29292e;
+            padding-top: 30px;
         }
     </style>
 </head>
 <body>
 
-    <div class="live-counter">
-        ⚠️ LIVE STEALTH FEED: <span id="liquidation-count">3,421,890</span> TRADERS LIQUIDATED TODAY
+    <div class="live-counter-marquee">
+        <span>⚠️ LIVE STEALTH FEED: <span id="liquidation-count">3,421,890</span> TRADERS LIQUIDATED TODAY — $LQD IS THE ONLY INVERSE INDICATOR — DO NOT BUY IF YOU LIKE MONEY — ⚠️</span>
     </div>
 
     <div class="container">
@@ -210,14 +309,15 @@
         </div>
 
         <div style="text-align: center;">
-            <h2>Bought the top again? Welcome home.</h2>
-            <p style="font-size: 16px; max-width: 600px; margin: 0 auto; margin-bottom: 20px;">
+            <h2 style="border: none; padding: 0; display: inline-block;">Bought the top again? Welcome home.</h2>
+            <p style="font-size: 18px; max-width: 650px; margin: 10px auto 25px auto; font-weight: bold;">
                 The first memecoin built exclusively to celebrate the reverse-intelligence of retail traders. When the chart melts, our mood pumps.
             </p>
         </div>
 
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="1779396908205.png" alt="$LIQUD Mascot" style="width: 220px; height: 220px; border-radius: 50%; border: 4px solid #ff4a4a; object-fit: cover; box-shadow: 0 0 20px rgba(255, 74, 74, 0.5);">
+        <div style="text-align: center; margin: 40px 0; position: relative;">
+            <img src="1779396908205.png" alt="$LIQUD Mascot" style="width: 250px; height: 250px; border-radius: 50%; border: 8px solid #ff4a4a; object-fit: cover; box-shadow: 0 0 30px rgba(255, 74, 74, 0.7); animation: glitchImg 4s infinite alternate;">
+            <div style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%) rotate(-15deg); background: #ffff00; color: #000; padding: 5px 15px; font-weight: bold; font-family: 'Comic Sans MS', cursive; border-radius: 5px; box-shadow: 3px 3px 0 #000;">ULTRA REKT!</div>
         </div>
 
         <div class="cta-buttons">
@@ -234,9 +334,9 @@
         </div>
 
         <div class="rekt-meter-box" id="meter-box">
-            <h3>📉 Are you Rekt? Test Your Wallet</h3>
-            <p>Our decentralized algorithm analyzes your historical bad financial decisions.</p>
-            <button class="btn btn-primary" onclick="checkRektLevel()">Scan My Wallet Level</button>
+            <h3>📉 Are you Rekt? Test Your Wallet Address</h3>
+            <p style="font-weight: bold; color: #ffcccc;">Our decentralized chaos algorithm analyzes your historical bad financial decisions.</p>
+            <button class="btn btn-primary" onclick="checkRektLevel()">Scan My Wallet Bad Luck Level</button>
             <div id="rekt-result"></div>
         </div>
 
@@ -259,128 +359,113 @@
                 <tr>
                     <td><strong>Total Supply</strong></td>
                     <td>1,000,000,000 LQD</td>
-                    <td>1 Billion fixed tokens. No future inflation.</td>
+                    <td>1 Billion fixed tokens. No future inflation. Very scarce!</td>
                 </tr>
                 <tr>
                     <td><strong>Trading Tax</strong></td>
                     <td>0%</td>
-                    <td>Zero buy or sell taxes. Clean trading.</td>
+                    <td>Zero buy or sell taxes. Clean trading for maximum degen.</td>
                 </tr>
                 <tr>
                     <td><strong>Launch Meta</strong></td>
                     <td>100% Fair Launch</td>
-                    <td>Launched via Four.meme. No free team allocations.</td>
+                    <td>Launched via Four.meme. No free team allocations. Dev is poor too.</td>
                 </tr>
                 <tr>
                     <td><strong>Security</strong></td>
                     <td>Liquidity Burned</td>
-                    <td>Liquidity automatically locked and burned upon PancakeSwap graduation.</td>
+                    <td>Liquidity automatically locked and burned upon PancakeSwap graduation. Rugproof!</td>
                 </tr>
             </tbody>
         </table>
 
         <h2>Contract Address</h2>
-        <p>Make sure you are buying the right token. Copy the official CA below:</p>
+        <p style="font-weight: bold;">Make sure you are buying the right token, don't get scammed again. Copy the official CA below:</p>
         <div class="code-box">
             OFFICIAL_CONTRACT_ADDRESS_WILL_BE_HERE
         </div>
 
         <h2>How to Buy (A Guide for Financial Noobs)</h2>
         <ol>
-            <li><strong>Prepare Your Barrel:</strong> Download Metamask or Trust Wallet and load it up with some Binance Coin ($BNB) on the BSC network.</li>
-            <li><strong>Visit Four.meme:</strong> Head over to the platform using the official link at the top of this page.</li>
-            <li><strong>Swap BNB for LQD:</strong> Input the amount of BNB you are willing to watch fluctuate and hit buy.</li>
+            <li><strong>Prepare Your Barrel:</strong> Download Metamask or Trust Wallet and load it up with some Binance Coin ($BNB) on the BSC network. Don't use your rent money.</li>
+            <li><strong>Visit Four.meme:</strong> Head over to the platform using the official link at the top of this page. Connect your wallet.</li>
+            <li><strong>Swap BNB for LQD:</strong> Input the amount of BNB you are willing to watch fluctuate wildly and hit buy. Slippage 0.5% is fine.</li>
             <li><strong>Join the Crew on Twitter:</strong> Follow our official X account to post your loss-portfolio screenshots and enjoy premium cat memes.</li>
         </ol>
 
         <div class="footer">
-            <p>&copy; 2026 $LIQUD Token. Built by and for rekt traders. No financial utility. Do not invest your lunch money.</p>
+            <p style="font-weight: bold; color: #ffaa00;">&copy; 2026 $LIQUD Token. Built by and for rekt traders. No financial utility. Strictly for the memes. Do not invest your lunch money.</p>
         </div>
     </div>
 
     <script>
-        // 1. Contador Falso Dinâmico que sobe sem parar
         let count = 3421890;
         setInterval(() => {
-            count += Math.floor(Math.random() * 3) + 1;
+            count += Math.floor(Math.random() * 10) + 1; // Sobe mais rápido
             document.getElementById('liquidation-count').innerText = count.toLocaleString();
-        }, 1500);
+        }, 800); // Atualiza mais rápido
 
-        // 2. Função de Sintetizador de Áudio (Sirene do Azar)
         function playSiren() {
             try {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 const oscillator = audioCtx.createOscillator();
                 const gainNode = audioCtx.createGain();
-                
                 oscillator.type = 'sawtooth';
-                oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); // Frequência base
-                
-                // Efeito de oscilação da sirene (sobe e desce)
-                oscillator.frequency.linearRampToValueAtTime(880, audioCtx.currentTime + 0.3);
-                oscillator.frequency.linearRampToValueAtTime(440, audioCtx.currentTime + 0.6);
-                oscillator.frequency.linearRampToValueAtTime(880, audioCtx.currentTime + 0.9);
-                oscillator.frequency.linearRampToValueAtTime(440, audioCtx.currentTime + 1.2);
-                
-                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime); // Volume controlado
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1.2); // Fade out
-                
+                oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
+                oscillator.frequency.linearRampToValueAtTime(1200, audioCtx.currentTime + 0.2); // Sirene mais aguda e rápida
+                oscillator.frequency.linearRampToValueAtTime(440, audioCtx.currentTime + 0.4);
+                oscillator.frequency.linearRampToValueAtTime(1200, audioCtx.currentTime + 0.6);
+                oscillator.frequency.linearRampToValueAtTime(440, audioCtx.currentTime + 0.8);
+                gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime); // Volume um pouco mais alto
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.0);
                 oscillator.connect(gainNode);
                 gainNode.connect(audioCtx.destination);
-                
                 oscillator.start();
-                oscillator.stop(audioCtx.currentTime + 1.2);
+                oscillator.stop(audioCtx.currentTime + 1.0);
             } catch(e) {
-                console.log("Audio block prevented or not supported.");
+                console.log("Audio block prevented.");
             }
         }
 
-        // 3. Medidor Rekt com Alarme Visual e Sonoro
         function checkRektLevel() {
             const resultDiv = document.getElementById('rekt-result');
             const meterBox = document.getElementById('meter-box');
-            
-            resultDiv.innerHTML = "Scanning your wallet address bad luck... ⏳";
+            resultDiv.innerHTML = "Scanning your wallet address bad luck history... ⏳";
+            resultDiv.style.color = "#fff";
             meterBox.classList.remove('rekt-alarm-active');
-            
             const outcomes = [
                 "🚨 99.9% REKT: You currently live in a wooden barrel. Welcome leader!",
                 "📉 85% REKT: You bought the exact top of 4 different memecoins today.",
                 "🙀 70% REKT: Your cats are officially planning to look for a better owner.",
                 "🕯️ 95% REKT: Absolutely vaporized by a $0.0001 scam wick on 100x leverage.",
                 "🛑 100% REKT: You traded your actual lunch money. Absolute legend.",
+                "👻 150% REKT: You owe money to a centralized exchange you never used.",
                 "🤷‍♂️ 50% REKT: Not completely broke yet, but you are getting there fast."
             ];
-
             setTimeout(() => {
                 const randomChoice = outcomes[Math.floor(Math.random() * outcomes.length)];
                 resultDiv.innerHTML = randomChoice;
+                resultDiv.style.color = "#ffff00";
                 meterBox.classList.add('rekt-alarm-active');
-                playSiren(); // Toca a sirene quando dá o resultado do azar
+                playSiren();
             }, 1200);
         }
 
-        // 4. O Botão Troll Esquivo (Foge do Clique)
         const trollBtn = document.getElementById('troll-btn');
-        
         function moveButton() {
-            const x = Math.random() * (window.innerWidth - trollBtn.offsetWidth - 40);
-            const y = Math.random() * (window.innerHeight - trollBtn.offsetHeight - 40);
-            
+            const x = Math.random() * (window.innerWidth - trollBtn.offsetWidth - 50); // Margem maior
+            const y = Math.random() * (window.innerHeight - trollBtn.offsetHeight - 50);
             trollBtn.style.position = 'fixed';
             trollBtn.style.left = x + 'px';
             trollBtn.style.top = y + 'px';
         }
-
         trollBtn.addEventListener('mouseover', moveButton);
         trollBtn.addEventListener('touchstart', function(e) {
             e.preventDefault();
             moveButton();
         });
-
-        // Caso o utilizador seja um ninja e consiga clicar no botão fugitivo:
         trollBtn.addEventListener('click', () => {
-            alert("❌ ERROR: Your connected wallet balance is too low to receive free money. Go buy $LQD instead!");
+            alert("❌ ERROR: Your connected wallet balance is too low to receive free money. Go buy $LQD instead, broke boi!");
         });
     </script>
 </body>
