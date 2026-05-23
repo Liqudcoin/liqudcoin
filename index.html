@@ -5,42 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$LIQUD - Maximum Chaos Rekt Simulator</title>
     <style>
-        /* Reset e Base Global */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
         body {
-            background-color: #050508;
+            background-color: #0b0b0c;
             color: #ffffff;
-            font-family: 'Impact', 'Segoe UI', Arial, sans-serif;
-            overflow-x: hidden;
-            padding-top: 45px;
+            font-family: Arial, sans-serif;
+            padding-top: 50px;
+            text-align: center;
         }
 
-        /* Fundo Cascata Matrix de Texto */
-        .matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            font-family: monospace;
-            font-size: 10px;
-            color: rgba(255, 74, 74, 0.06);
-            word-wrap: break-word;
-            pointer-events: none;
-            user-select: none;
-        }
-
-        /* Marquise de Liquidações Superior */
+        /* Marquise Superior */
         .marquee-container {
             background-color: #990000;
             border-bottom: 2px solid #ff4a4a;
             color: #ffffff;
-            padding: 6px 0;
+            padding: 8px 0;
             font-size: 13px;
             font-weight: bold;
             position: fixed;
@@ -48,223 +31,201 @@
             width: 100%;
             z-index: 1000;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
         }
         .marquee-content {
             display: inline-block;
             white-space: nowrap;
-            animation: marqueeEffect 20s linear infinite;
+            animation: marqueeEffect 15s linear infinite;
         }
         @keyframes marqueeEffect {
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-50%, 0, 0); }
         }
-        .marquee-content span {
-            color: #ffff00;
-        }
 
-        /* Wrapper Principal */
         .main-wrapper {
-            position: relative;
-            z-index: 10;
-            max-width: 800px;
+            max-width: 500px;
             margin: 0 auto;
-            padding: 10px 15px;
+            padding: 15px;
         }
 
-        /* Banner de Fogo Superior */
+        /* Banner Principal */
         .fire-banner {
-            width: 100%;
-            background: linear-gradient(0deg, #000000 0%, #990000 60%, #ffaa00 100%);
+            background: linear-gradient(0deg, #000000 0%, #990000 100%);
             border-radius: 12px;
             border: 3px solid #ff4a4a;
-            box-shadow: 0 0 25px rgba(255, 74, 74, 0.4);
-            margin-top: 10px;
-            margin-bottom: 20px;
             padding: 25px 10px;
-            text-align: center;
+            margin-bottom: 25px;
         }
         .fire-banner h1 {
-            font-size: 52px;
-            letter-spacing: 4px;
+            font-size: 45px;
+            letter-spacing: 2px;
             color: #ffffff;
-            text-shadow: 3px 3px 0px #000, 0 0 15px #ff4a4a;
         }
         .fire-banner p {
-            font-size: 13px;
+            font-size: 14px;
             color: #ffff00;
             margin-top: 5px;
             font-weight: bold;
-            letter-spacing: 1px;
         }
 
-        /* Grid Flexível que se molda ao Telemóvel */
-        .dashboard-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        /* Caixa Esquerda: O Teu Logo Oficial Em Destaque */
-        .grid-left {
-            background: rgba(11, 11, 12, 0.9);
-            border: 3px solid #ff4a4a;
-            border-radius: 16px;
-            padding: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 20px rgba(255, 74, 74, 0.2);
-            position: relative;
-        }
-        .logo-mascot-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 6px solid #ff4a4a;
-            object-fit: cover;
-            box-shadow: 0 0 25px rgba(255, 74, 74, 0.6);
-        }
-        .jackpot-badge {
-            position: absolute;
-            top: -15px;
-            background: #ffff00;
-            color: #000;
-            padding: 4px 12px;
-            font-weight: bold;
-            font-size: 14px;
-            border-radius: 5px;
-            box-shadow: 2px 2px 0 #000;
-        }
-
-        /* REKT METER (Painel Néon Amarelo) */
-        .rekt-meter-card {
-            background-color: rgba(20, 20, 25, 0.95);
-            border: 4px solid #ffaa00;
+        /* O Teu Logo Oficial em Destaque Absoluto */
+        .logo-box {
+            background: #141419;
+            border: 3px solid #ffaa00;
             border-radius: 16px;
             padding: 20px;
-            text-align: center;
-            box-shadow: 0 0 25px rgba(255, 170, 0, 0.4);
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(255, 170, 0, 0.2);
         }
-        .rekt-meter-card h3 {
-            font-size: 30px;
-            color: #ffffff;
-            text-shadow: 0 0 10px #ffaa00;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-        .wheel-and-siren {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 20px;
-        }
-
-        /* Roda Sólida CSS que Funciona Sempre */
-        .wheel-graphic {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            border: 5px solid #ffffff;
-            background: conic-gradient(#ff4a4a 0deg 60deg, #ffaa00 60deg 120deg, #990000 120deg 180deg, #141419 180deg 240deg, #ff007f 240deg 300deg, #330000 300deg 360deg);
-            box-shadow: 0 0 15px rgba(255,255,255,0.4);
-            transition: transform 3s cubic-bezier(0.1, 0.8, 0.1, 1);
-            position: relative;
-        }
-        .wheel-pointer {
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 16px solid #ff4a4a;
-            margin: 0 auto -10px auto;
-            position: relative;
-            z-index: 15;
-        }
-        .siren-visual {
-            width: 50px;
-            height: 50px;
-            background-color: #440000;
-            border: 3px solid #ff4a4a;
-            border-radius: 50% 50% 0 0;
-            box-shadow: 0 0 5px rgba(0,0,0,0.5);
-        }
-        .siren-base {
-            width: 58px;
-            height: 10px;
-            background-color: #555;
-            margin-top: -2px;
-            border-radius: 2px;
-        }
-
-        /* Animação do Alarme Ativo */
-        .alarm-active .siren-visual {
-            animation: flashLight 0.2s infinite alternate;
-        }
-        .alarm-active {
-            animation: borderFlash 0.4s infinite alternate;
-        }
-        @keyframes flashLight {
-            from { background-color: #ff0000; box-shadow: 0 0 25px #ff0000; }
-            to { background-color: #330000; }
-        }
-        @keyframes borderFlash {
-            from { border-color: #ffaa00; }
-            to { border-color: #ff0000; }
-        }
-
-        .scan-trigger-btn {
-            background: linear-gradient(135deg, #ffaa00, #ff4a4a);
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: bold;
-            padding: 12px 25px;
-            border: 2px solid #fff;
-            border-radius: 8px;
-            cursor: pointer;
-            text-transform: uppercase;
+        .logo-img {
             width: 100%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-        }
-        .result-display-text {
-            font-size: 16px;
-            font-weight: bold;
-            color: #ffff00;
-            margin-top: 15px;
-            min-height: 40px;
+            max-width: 220px;
+            height: auto;
+            border-radius: 50%;
+            border: 5px solid #ffaa00;
         }
 
-        /* Menu de Botões Neon Robustos */
+        /* Menu de Botões Grandes para Polegar */
         .buttons-menu {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            margin-top: 10px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
-        .neon-action-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
+        .neon-btn {
+            display: block;
+            padding: 18px;
             border-radius: 12px;
             text-decoration: none;
             font-size: 18px;
             font-weight: bold;
             text-transform: uppercase;
-            text-align: center;
+            color: #ffffff;
             border: none;
             cursor: pointer;
         }
         .btn-four {
             background-color: #e60000;
-            color: #ffffff;
-            border: 4px solid #ffff00;
+            border: 3px solid #ffff00;
             box-shadow: 0 0 15px #e60000;
         }
         .btn-x {
             background-color: #001122;
-            color: #00ffff
+            color: #00ffff;
+            border: 3px solid #00ffff;
+        }
+        .btn-troll {
+            background: linear-gradient(180deg, #ff007f, #800040);
+            color: #ffff00;
+            border: 2px solid #ff007f;
+        }
+
+        /* Blocos de Texto */
+        .info-card {
+            background-color: #141419;
+            border: 2px solid #29292e;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .info-card h4 {
+            font-size: 22px;
+            color: #ff4a4a;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .info-card p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #d1d1d6;
+        }
+
+        .footer {
+            font-size: 12px;
+            color: #7c7c8a;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #29292e;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="marquee-container">
+        <div class="marquee-content">
+            ⚠️ LIVE STEALTH FEED: <span id="liquidation-count">3,421,890</span> TRADERS LIQUIDATED TODAY &bull; $LQD ACTIVE &bull; GET REKT TOGETHER &bull; ⚠️ LIVE STEALTH FEED: 3,421,890 TRADERS LIQUIDATED TODAY &bull;
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        
+        <div class="fire-banner">
+            <h1>$LIQUD</h1>
+            <p>"The market might go up, the market might go down, but we get liquidated anyway."</p>
+        </div>
+
+        <div class="logo-box">
+            <img src="1779396908205.png" alt="$LIQUD Logo" class="logo-img">
+            <h3 style="color: #ffaa00; margin-top: 15px; font-size: 24px;">JACKPOT REKT!</h3>
+        </div>
+
+        <div class="buttons-menu">
+            <a href="https://four.meme/en" class="neon-btn btn-four" target="_blank">$LIQUD on Four.mom</a>
+            <a href="https://x.com/liqudCoin" class="neon-btn btn-x" target="_blank">Follow on Twitter/X</a>
+            <button class="neon-btn btn-troll" id="evasiveTrollBtn">Win Free Money</button>
+        </div>
+
+        <div class="info-card">
+            <h4>Manifesto</h4>
+            <p>
+                $LIQUD is a meme-driven chaos ecosystem built aggressively to honor the reverse-intelligence of retail traders. 
+                Turn your liquidations into communal premium laughs. You entered with 100x leverage and got deleted by a single one-second scam wick. Welcome to the barrel community.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <h4>Tokenomics</h4>
+            <p style="color: #00ff66; font-weight: bold; margin-bottom: 5px;">&bull; Total Supply: 1,000,000,000 LQD</p>
+            <p style="color: #ff007f; font-weight: bold;">&bull; Trading Tax: 0% (Pure Degen)</p>
+        </div>
+
+        <div class="footer">
+            <p>NO FINANCIAL ADVICE. STRICTLY FOR THE MEMES.</p>
+        </div>
+
+    </div>
+
+    <script>
+        // Contador Real Animado
+        let liveCount = 3421890;
+        setInterval(() => {
+            liveCount += Math.floor(Math.random() * 3) + 1;
+            document.getElementById('liquidation-count').innerText = liveCount.toLocaleString();
+        }, 900);
+
+        // Botão Troll que foge quando o polegar se aproxima
+        const trollBtn = document.getElementById('evasiveTrollBtn');
+        trollBtn.addEventListener('mouseover', relocateButton);
+        trollBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            relocateButton();
+        });
+
+        function relocateButton() {
+            const maxX = window.innerWidth - trollBtn.offsetWidth - 30;
+            const maxY = window.innerHeight - trollBtn.offsetHeight - 30;
+            const newX = Math.max(15, Math.random() * maxX);
+            const newY = Math.max(50, Math.random() * maxY);
             
+            trollBtn.style.position = 'fixed';
+            trollBtn.style.left = newX + 'px';
+            trollBtn.style.top = newY + 'px';
+            trollBtn.style.zIndex = "9999";
+        }
+        trollBtn.addEventListener('click', () => {
+            alert("❌ ERROR: Wallet too thin. Go buy $LQD!");
+        });
+    </script>
+</body>
+</html>
