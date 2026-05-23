@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$LIQUD - Maximum Chaos Rekt Simulator</title>
+    <title>$LIQUD - The Official Token for the Liquidated</title>
     <style>
         * {
             box-sizing: border-box;
@@ -13,15 +13,27 @@
         body {
             background-color: #0b0b0c;
             color: #ffffff;
-            font-family: Arial, sans-serif;
-            padding-top: 50px;
+            font-family: 'Impact', Arial, sans-serif;
+            padding-top: 60px;
             text-align: center;
+            transition: transform 0.1s;
         }
 
-        /* Marquise Superior */
+        /* Efeito Terramoto para quando ficas Rekt */
+        .shake {
+            animation: shakeScreen 0.3s cubic-bezier(.36,.07,.19,.97) both;
+        }
+        @keyframes shakeScreen {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            25%, 75% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* Marquise Superior Néon */
         .marquee-container {
             background-color: #990000;
-            border-bottom: 2px solid #ff4a4a;
+            border-bottom: 3px solid #ff4a4a;
             color: #ffffff;
             padding: 8px 0;
             font-size: 13px;
@@ -31,11 +43,12 @@
             width: 100%;
             z-index: 1000;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
         }
         .marquee-content {
             display: inline-block;
             white-space: nowrap;
-            animation: marqueeEffect 15s linear infinite;
+            animation: marqueeEffect 12s linear infinite;
         }
         @keyframes marqueeEffect {
             0% { transform: translate3d(0, 0, 0); }
@@ -43,58 +56,67 @@
         }
 
         .main-wrapper {
-            max-width: 500px;
+            max-width: 480px;
             margin: 0 auto;
-            padding: 15px;
+            padding: 10px 15px;
         }
 
-        /* Banner Principal */
+        /* Banner Principal de Fogo */
         .fire-banner {
-            background: linear-gradient(0deg, #000000 0%, #990000 100%);
+            background: linear-gradient(180deg, #ffaa00 0%, #990000 100%);
             border-radius: 12px;
             border: 3px solid #ff4a4a;
-            padding: 25px 10px;
-            margin-bottom: 25px;
+            padding: 20px 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px #ff4a4a;
         }
         .fire-banner h1 {
-            font-size: 45px;
+            font-size: 50px;
             letter-spacing: 2px;
             color: #ffffff;
-        }
-        .fire-banner p {
-            font-size: 14px;
-            color: #ffff00;
-            margin-top: 5px;
-            font-weight: bold;
+            text-shadow: 2px 2px 0px #000;
         }
 
-        /* O Teu Logo Oficial em Destaque Absoluto */
-        .logo-box {
-            background: #141419;
-            border: 3px solid #ffaa00;
+        /* Zona Principal Interativa (O Gato e a Máquina de Cope) */
+        .interactive-box {
+            background: rgba(20, 20, 25, 0.95);
+            border: 4px solid #ffaa00;
             border-radius: 16px;
             padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 20px rgba(255, 170, 0, 0.2);
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(255, 170, 0, 0.3);
         }
         .logo-img {
             width: 100%;
-            max-width: 220px;
+            max-width: 180px;
             height: auto;
             border-radius: 50%;
-            border: 5px solid #ffaa00;
+            border: 5px solid #ff4a4a;
+            margin-bottom: 15px;
         }
 
-        /* Menu de Botões Grandes para Polegar */
-        .buttons-menu {
+        /* Caixa de Resposta Dinâmica */
+        .cope-display {
+            background-color: #0b0b0c;
+            border: 2px dashed #ff4a4a;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            min-height: 70px;
             display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 25px;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+            color: #ffff00;
         }
-        .neon-btn {
+
+        /* Botões Estilo Casino */
+        .action-btn {
             display: block;
-            padding: 18px;
+            width: 100%;
+            padding: 16px;
             border-radius: 12px;
             text-decoration: none;
             font-size: 18px;
@@ -103,6 +125,12 @@
             color: #ffffff;
             border: none;
             cursor: pointer;
+            margin-bottom: 12px;
+        }
+        .btn-generator {
+            background: linear-gradient(135deg, #ffaa00, #ff4a4a);
+            border: 2px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
         .btn-four {
             background-color: #e60000;
@@ -120,33 +148,34 @@
             border: 2px solid #ff007f;
         }
 
-        /* Blocos de Texto */
+        /* Manifesto e Informações */
         .info-card {
             background-color: #141419;
             border: 2px solid #29292e;
             border-radius: 12px;
             padding: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: left;
         }
         .info-card h4 {
             font-size: 22px;
             color: #ff4a4a;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             text-transform: uppercase;
         }
         .info-card p {
-            font-size: 15px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
             line-height: 1.5;
             color: #d1d1d6;
         }
 
         .footer {
-            font-size: 12px;
+            font-size: 11px;
             color: #7c7c8a;
             margin-top: 30px;
-            padding-top: 15px;
             border-top: 1px solid #29292e;
+            padding-top: 15px;
         }
     </style>
 </head>
@@ -154,7 +183,7 @@
 
     <div class="marquee-container">
         <div class="marquee-content">
-            ⚠️ LIVE STEALTH FEED: <span id="liquidation-count">3,421,890</span> TRADERS LIQUIDATED TODAY &bull; $LQD ACTIVE &bull; GET REKT TOGETHER &bull; ⚠️ LIVE STEALTH FEED: 3,421,890 TRADERS LIQUIDATED TODAY &bull;
+            🚨 REKT FEED: <span id="liquidation-count">3,421,890</span> DEGENS VAPORIZED TODAY &bull; STOP TRADING ALONE, COPE TOGETHER &bull; $LQD LAUNCHING ON FOUR.MEME &bull; 🚨 REKT FEED: <span id="liquidation-count2">3,421,890</span> DEGENS VAPORIZED TODAY &bull;
         </div>
     </div>
 
@@ -165,46 +194,91 @@
             <p>"The market might go up, the market might go down, but we get liquidated anyway."</p>
         </div>
 
-        <div class="logo-box">
+        <div class="interactive-box">
             <img src="1779396908205.png" alt="$LIQUD Logo" class="logo-img">
-            <h3 style="color: #ffaa00; margin-top: 15px; font-size: 24px;">JACKPOT REKT!</h3>
+            
+            <h3 style="color: #ffaa00; text-transform: uppercase; font-size: 22px;">🔮 THE COPE GENERATOR</h3>
+            <p style="font-family: Arial, sans-serif; font-size: 12px; color: #aaa; margin-top: 2px;">Lost everything on 100x leverage? Generate your institutional excuse below:</p>
+            
+            <div class="cope-display" id="copeOutput">Click the button below to claim your liquidation verdict...</div>
+            
+            <button class="action-btn btn-generator" onclick="generateDeDegenCope()">⚡ GENERATE COPE VERDICT ⚡</button>
         </div>
 
-        <div class="buttons-menu">
-            <a href="https://four.meme/en" class="neon-btn btn-four" target="_blank">$LIQUD on Four.mom</a>
-            <a href="https://x.com/liqudCoin" class="neon-btn btn-x" target="_blank">Follow on Twitter/X</a>
-            <button class="neon-btn btn-troll" id="evasiveTrollBtn">Win Free Money</button>
+        <div style="margin-bottom: 25px;">
+            <a href="https://four.meme/en" class="action-btn btn-four" target="_blank">$LIQUD on Four.mom</a>
+            <a href="https://x.com/liqudCoin" class="action-btn btn-x" target="_blank">Follow on Twitter/X</a>
+            <button class="action-btn btn-troll" id="evasiveTrollBtn">Win Free Money</button>
         </div>
 
         <div class="info-card">
-            <h4>Manifesto</h4>
+            <h4>The Manifesto</h4>
             <p>
-                $LIQUD is a meme-driven chaos ecosystem built aggressively to honor the reverse-intelligence of retail traders. 
-                Turn your liquidations into communal premium laughs. You entered with 100x leverage and got deleted by a single one-second scam wick. Welcome to the barrel community.
+                $LIQUD is the official inverse indicator for retail traders. You wait weeks for an entry, use maximum leverage, and get targeted by a 1-second scam wick. Relax, stop crying, and join the barrel squad.
             </p>
         </div>
 
         <div class="info-card">
             <h4>Tokenomics</h4>
-            <p style="color: #00ff66; font-weight: bold; margin-bottom: 5px;">&bull; Total Supply: 1,000,000,000 LQD</p>
-            <p style="color: #ff007f; font-weight: bold;">&bull; Trading Tax: 0% (Pure Degen)</p>
+            <p style="color: #00ff66; font-weight: bold; font-family: Arial; font-size: 14px;">&bull; Total Supply: 1,000,000,000 LQD</p>
+            <p style="color: #ff007f; font-weight: bold; font-family: Arial; font-size: 14px; margin-top: 5px;">&bull; Buy/Sell Tax: 0%</p>
         </div>
 
         <div class="footer">
-            <p>NO FINANCIAL ADVICE. STRICTLY FOR THE MEMES.</p>
+            <p>NO FINANCIAL ADVICE. STRICTLY FOR THE MEMES. BY DEGENS FOR DEGENS.</p>
         </div>
 
     </div>
 
     <script>
-        // Contador Real Animado
+        // Contador Real em Movimento
         let liveCount = 3421890;
         setInterval(() => {
-            liveCount += Math.floor(Math.random() * 3) + 1;
+            liveCount += Math.floor(Math.random() * 4) + 1;
             document.getElementById('liquidation-count').innerText = liveCount.toLocaleString();
-        }, 900);
+            document.getElementById('liquidation-count2').innerText = liveCount.toLocaleString();
+        }, 800);
 
-        // Botão Troll que foge quando o polegar se aproxima
+        // Mecânica Inovadora e Divertida: O Cope Generator com Efeito Tremor
+        function generateDeDegenCope() {
+            const output = document.getElementById('copeOutput');
+            output.innerHTML = "Consulting the market makers... ⏳";
+            
+            // Adiciona a classe de tremor ao corpo da página
+            document.body.classList.add('shake');
+            
+            // Toca um bipe sonoro de erro retro pelo telemóvel
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(150, audioCtx.currentTime); // Som grave de erro/bomba
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.3);
+            } catch(e) {}
+
+            const excuses = [
+                "📉 REKT: 'It wasn't a mistake, it was a market maker stop-loss hunt targeting my exact $32 balance.'",
+                "🙀 CAT REKT: Your black cat walked over the keyboard and clicked 100x Market Buy. Not your fault.",
+                "🐳 WHALE ALERT: A billionaire wallet sold $10M worth of tokens just to clear your $15 position.",
+                "🛢️ BARREL ENTRY: You bought the exact local top perfectly. The chart inverted right after. Moving into the barrel.",
+                "🛑 COPE LEVEL 99: 'I'm not down 95%, I am just dollar-cost-averaging from the stratosphere.'",
+                "👻 CENTRALIZED EXPLOIT: 'The exchange lag stole my margin. Sending an angry tweet right now.'"
+            ];
+
+            setTimeout(() => {
+                // Remove o tremor para poder ser ativado novamente no próximo clique
+                document.body.classList.remove('shake');
+                output.innerHTML = excuses[Math.floor(Math.random() * excuses.length)];
+            }, 500);
+        }
+
+        // Botão Troll que foge do polegar no telemóvel
         const trollBtn = document.getElementById('evasiveTrollBtn');
         trollBtn.addEventListener('mouseover', relocateButton);
         trollBtn.addEventListener('touchstart', function(e) {
@@ -216,7 +290,7 @@
             const maxX = window.innerWidth - trollBtn.offsetWidth - 30;
             const maxY = window.innerHeight - trollBtn.offsetHeight - 30;
             const newX = Math.max(15, Math.random() * maxX);
-            const newY = Math.max(50, Math.random() * maxY);
+            const newY = Math.max(60, Math.random() * maxY);
             
             trollBtn.style.position = 'fixed';
             trollBtn.style.left = newX + 'px';
@@ -224,7 +298,7 @@
             trollBtn.style.zIndex = "9999";
         }
         trollBtn.addEventListener('click', () => {
-            alert("❌ ERROR: Wallet too thin. Go buy $LQD!");
+            alert("❌ ERROR: Your wallet balance is too low to handle free money. Buy $LQD!");
         });
     </script>
 </body>
