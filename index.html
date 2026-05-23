@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$LIQUD - The Official Token for the Liquidated</title>
+    <title>$LIQUD - Maximum Chaos Rekt Simulator - 1337 Online</title>
     <style>
+        /* Reset e Base Global */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -12,35 +13,49 @@
         }
         body {
             background-color: #0b0b0c;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            padding-top: 60px;
+            color: #e1e1e6;
+            font-family: 'Impact', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Fundo Cascata Matrix de Texto */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            font-family: monospace;
+            font-size: 10px;
+            color: rgba(255, 74, 74, 0.08);
+            word-wrap: break-word;
+            pointer-events: none;
+            user-select: none;
+        }
+        .matrix-column {
+            position: absolute;
+            top: -200px;
+            display: flex;
+            flex-direction: column;
             text-align: center;
-            transition: transform 0.1s, background-color 0.1s;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { top: -300px; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
         }
 
-        /* Animação de Flash Vermelho no Fundo */
-        .flash-red {
-            background-color: #4a0000 !important;
-        }
-
-        /* Efeito Terramoto para o Choque da Liquidação */
-        .shake {
-            animation: shakeScreen 0.3s cubic-bezier(.36,.07,.19,.97) both;
-        }
-        @keyframes shakeScreen {
-            10%, 90% { transform: translate3d(-3px, 0, 0); }
-            25%, 75% { transform: translate3d(5px, 0, 0); }
-            30%, 50%, 70% { transform: translate3d(-7px, 0, 0); }
-            40%, 60% { transform: translate3d(7px, 0, 0); }
-        }
-
-        /* Marquise Superior Néon Vibrante */
+        /* Barra de Alerta Dinâmica Superior (Marquee) */
         .marquee-container {
             background-color: #990000;
             border-bottom: 3px solid #ff4a4a;
             color: #ffffff;
-            padding: 8px 0;
+            padding: 6px 0;
             font-size: 13px;
             font-weight: bold;
             position: fixed;
@@ -48,278 +63,300 @@
             width: 100%;
             z-index: 1000;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.5);
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
         }
         .marquee-content {
             display: inline-block;
             white-space: nowrap;
-            animation: marqueeEffect 12s linear infinite;
+            animation: marqueeEffect 18s linear infinite;
         }
         @keyframes marqueeEffect {
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-50%, 0, 0); }
         }
-
-        .main-wrapper {
-            max-width: 480px;
-            margin: 0 auto;
-            padding: 10px 15px;
-        }
-
-        /* Banner Superior Premium */
-        .fire-banner {
-            background: linear-gradient(180deg, #141419 0%, #000000 100%);
-            border-radius: 16px;
-            border: 3px solid #ff4a4a;
-            padding: 30px 10px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 20px rgba(255, 74, 74, 0.3);
-        }
-        
-        /* TÍTULO $LIQUD ULTRA DIVERTIDO (Néon Degen + Tremor) */
-        .fire-banner h1 {
-            font-family: 'Impact', Charcoal, sans-serif;
-            font-size: 52px;
-            letter-spacing: 3px;
-            color: #fff;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px #ff4a4a, 0 0 20px #ff0000;
-            animation: degenPulse 0.8s infinite alternate;
-            display: inline-block;
-        }
-        @keyframes degenPulse {
-            0% { text-shadow: 0 0 10px #ff4a4a, 0 0 20px #ff0000; transform: rotate(-1deg) scale(1); }
-            100% { text-shadow: 0 0 20px #ff007f, 0 0 30px #ff4a4a; transform: rotate(1deg) scale(1.03); }
-        }
-
-        .fire-banner p {
-            font-size: 13px;
+        .marquee-content span {
             color: #ffff00;
-            margin-top: 8px;
+            text-shadow: 0 0 5px #ffff00;
+        }
+
+        /* Container Principal */
+        .main-wrapper {
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px 40px 20px;
+        }
+
+        /* Banner de Fogo Superior Premium */
+        .fire-banner {
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(0deg, #000000 0%, #3a0000 20%, #990000 45%, #ff4a4a 70%, #ffaa00 90%, #ffff00 100%);
+            border-radius: 12px;
+            border: 3px solid #ff4a4a;
+            box-shadow: 0 0 30px rgba(255, 74, 74, 0.4);
+            margin-top: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .fire-banner h1 {
+            font-size: 60px;
+            letter-spacing: 4px;
+            color: #ffffff;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff4a4a, 0 0 30px #ff0000, 2px 2px 0px #000;
+            animation: textGlitch 1.5s infinite alternate;
+        }
+        .fire-banner p {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 14px;
+            color: #ffff00;
             font-weight: bold;
             letter-spacing: 1px;
         }
 
-        /* Zona Interativa da Memecoin */
-        .interactive-box {
-            background: rgba(20, 20, 25, 0.95);
-            border: 4px solid #ffaa00;
-            border-radius: 16px;
-            padding: 25px 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 20px rgba(255, 170, 0, 0.3);
+        /* Grid Superior Caótico */
+        .dashboard-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+            margin-bottom: 30px;
         }
-        .logo-img {
-            width: 100%;
-            max-width: 190px;
-            height: auto;
-            border-radius: 50%;
-            border: 5px solid #ff4a4a;
-            margin-bottom: 15px;
-            box-shadow: 0 0 15px rgba(255, 74, 74, 0.4);
+        .grid-box {
+            background: rgba(11, 11, 12, 0.85);
+            border: 3px solid #ff4a4a;
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(255, 74, 74, 0.2);
+            position: relative;
         }
 
-        .cope-display {
-            background-color: #0b0b0c;
-            border: 2px dashed #ff4a4a;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 15px 0;
-            min-height: 80px;
+        /* ANIMAÇÃO DO GATO OFICIAL EM BARRIL */
+        .animated-logo-box {
+            position: relative;
+            width: 100%;
+            height: 240px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .jackpot-logo-img {
+            width: auto;
+            height: 220px;
+            border-radius: 50%;
+            border: 8px solid #ff4a4a;
+            object-fit: cover;
+            box-shadow: 0 0 30px rgba(255, 74, 74, 0.6);
+            /* Animação: Pulsar e rotação sutil dos olhos */
+            animation: slotMachineGif 0.2s infinite;
+        }
+        @keyframes slotMachineGif {
+            0% { transform: scale(1) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.02) rotate(1deg); opacity: 0.98; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        /* Chuva de Dinheiro Dinâmica Localizada */
+        .money-rain-local {
+            position: absolute;
+            font-size: 24px;
+            animation: moneyFallLocal linear infinite;
+            pointer-events: none;
+            z-index: 5;
+        }
+        @keyframes moneyFallLocal {
+            0% { top: -20px; opacity: 0; transform: translateX(0); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 200px; opacity: 0; transform: translateX(10px); }
+        }
+
+        /* REKT METER (Painel de Neon Amarelo com Roda) */
+        .rekt-meter-card {
+            background-color: rgba(20, 20, 25, 0.95);
+            border: 4px solid #ffaa00;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(255, 170, 0, 0.4);
+            transition: all 0.2s ease-in-out;
+        }
+        .rekt-meter-card h3 {
+            font-size: 30px;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px #ffaa00;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .wheel-and-siren {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 15px;
-            font-weight: bold;
-            color: #ffff00;
-            line-height: 1.4;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+        .wheel-wrapper {
+            position: relative;
+            width: 160px;
+            height: 160px;
+        }
+        .canvas-wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid #ffffff;
+            box-shadow: 0 0 15px rgba(255,255,255,0.4);
+            transition: transform 3s cubic-bezier(0.1, 0.8, 0.1, 1);
+        }
+        .wheel-pointer {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 18px solid #ff4a4a;
+            z-index: 10;
+        }
+        .siren-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+        }
+        .siren-visual {
+            width: 50px;
+            height: 50px;
+            background-color: #330000;
+            border: 3px solid #ff4a4a;
+            border-radius: 50% 50% 0 0;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+        .siren-base {
+            width: 60px;
+            height: 12px;
+            background-color: #444;
+            margin-top: -2px;
+            border-radius: 2px;
+        }
+        /* Efeito Alarme Ativo */
+        .alarm-active .siren-visual {
+            animation: flashSiren 0.2s infinite alternate;
+        }
+        .alarm-active {
+            animation: chaoticFlash 0.3s infinite alternate;
+        }
+        @keyframes flashSiren {
+            from { background-color: #ff0000; box-shadow: 0 0 30px #ff0000; }
+            to { background-color: #330000; box-shadow: 0 0 0px transparent; }
+        }
+        @keyframes chaoticFlash {
+            from { border-color: #ffaa00; box-shadow: 0 0 25px rgba(255, 170, 0, 0.4); }
+            to { border-color: #ff0000; box-shadow: 0 0 30px rgba(255, 0, 0, 0.6); }
         }
 
-        /* Botões de Ação Dinâmicos */
-        .action-btn {
-            display: block;
-            width: 100%;
-            padding: 16px;
+        .scan-trigger-btn {
+            background: linear-gradient(135deg, #ffaa00, #ff4a4a);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 25px;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            text-transform: uppercase;
+        }
+        .result-display-text {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffaa00;
+            margin-top: 15px;
+            min-height: 40px;
+        }
+
+        /* Botões de Ação Dinâmicos (Neon Tremor) */
+        .action-buttons-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .neon-action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px 25px;
             border-radius: 12px;
             text-decoration: none;
-            font-family: 'Impact', Arial, sans-serif;
             font-size: 18px;
             font-weight: bold;
             text-transform: uppercase;
-            color: #ffffff;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            animation: neonTremor 1.2s infinite alternate;
             border: none;
             cursor: pointer;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
         }
-        .btn-generator {
-            background: linear-gradient(135deg, #ffaa00, #ff4a4a);
-            border: 2px solid #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        @keyframes neonTremor {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(2px) scale(1.02); }
         }
-        /* CORRIGIDO PARA FOUR.MEME */
+        /* Botão Compra Las Vegas Style */
         .btn-four {
             background-color: #e60000;
-            border: 3px solid #ffff00;
+            color: #ffffff;
+            border: 4px solid #ffff00;
             box-shadow: 0 0 15px #e60000;
         }
+        .btn-four:hover {
+            box-shadow: 0 0 25px #ff4a4a, inset 0 0 10px #ffff00;
+        }
+        /* Botão Twitter X Néon Ciano */
         .btn-x {
             background-color: #001122;
             color: #00ffff;
             border: 3px solid #00ffff;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 12px #00ffff;
         }
-        .btn-troll {
+        .btn-x:hover {
+            background-color: #00ffff;
+            color: #001122;
+            box-shadow: 0 0 20px #00ffff;
+        }
+        /* Botão Troll 'Gotcha' */
+        .btn-troll-gotcha {
             background: linear-gradient(180deg, #ff007f, #800040);
             color: #ffff00;
-            border: 2px solid #ff007f;
+            border: 3px solid #ff007f;
+            box-shadow: 0 0 12px #ff007f;
         }
 
-        /* Painéis de Conteúdo Estilizados */
-        .info-card {
-            background-color: #141419;
-            border: 2px solid #29292e;
+        /* Paineis de Conteúdo Estruturados Inferiores */
+        .info-panels-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        .content-panel-card {
+            background-color: rgba(11, 11, 12, 0.95);
+            border: 3px solid #29292e;
             border-radius: 12px;
-            padding: 22px;
-            margin-bottom: 15px;
-            text-align: left;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        .info-card h4 {
-            font-family: 'Impact', Arial, sans-serif;
-            font-size: 24px;
-            color: #ff4a4a;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .info-card p {
-            font-size: 15px;
-            line-height: 1.6;
-            color: #e1e1e6;
-        }
-        .info-card strong {
-            color: #ffaa00;
-        }
-
-        .footer {
-            font-size: 11px;
-            color: #7c7c8a;
-            margin-top: 35px;
-            border-top: 1px solid #29292e;
-            padding-top: 20px;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="marquee-container">
-        <div class="marquee-content">
-            ⚠️ REKT FEED: <span id="liquidation-count">3,421,890</span> DEGENS VAPORIZED TODAY &bull; MAXIMUM CHAOS METRIC ACTIVE &bull; $LQD LAUNCHING LIVE ON FOUR.MEME &bull; ⚠️ REKT FEED: <span id="liquidation-count2">3,421,890</span> DEGENS VAPORIZED TODAY &bull;
-        </div>
-    </div>
-
-    <div class="main-wrapper">
-        
-        <div class="fire-banner">
-            <h1>📉 $LIQUD 📉</h1>
-            <p>(Ticker: LQD)</p>
-        </div>
-
-        <div class="interactive-box">
-            <img src="1779396908205.png" alt="$LIQUD Logo" class="logo-img">
-            
-            <h3 style="color: #ffaa00; font-family: 'Impact', Arial; font-size: 24px; letter-spacing: 1px;">🔮 THE COPE GENERATOR</h3>
-            <p style="font-size: 12px; color: #aaa; margin-top: 4px; font-weight: bold;">Vaporized by the orderbook? Get your official institutional excuse:</p>
-            
-            <div class="cope-display" id="copeOutput">Click the turbo button below to scan your market bad luck...</div>
-            
-            <button class="action-btn btn-generator" onclick="generateDeDegenCope()">⚡ GENERATE COPE VERDICT ⚡</button>
-        </div>
-
-        <div style="margin-bottom: 25px;">
-            <a href="https://four.meme/en" class="action-btn btn-four" target="_blank">$LIQUD on Four.meme</a>
-            <a href="https://x.com/liqudCoin" class="action-btn btn-x" target="_blank">Follow on Twitter/X</a>
-            <button class="action-btn btn-troll" id="evasiveTrollBtn">Win Free Money</button>
-        </div>
-
-        <div class="info-card">
-            <h4>The Manifesto</h4>
-            <p>
-                "You researched the project for weeks. You read the whitepaper. You drew perfect support lines and Fibonacci retracements on the chart. You waited for the absolute perfect entry. You clicked buy with 100x leverage... and exactly 3 seconds later, you got liquidated by a $0.0001 wick.<br><br>
-                You are not alone. We are the official inverse indicator. <strong>$LIQUD</strong> doesn't promise the Moon. It just promises that if you go broke, you'll do it in good company and with a smile on your face."
-            </p>
-        </div>
-
-        <div class="info-card">
-            <h4>Tokenomics</h4>
-            <p style="color: #00ff66; font-weight: bold; font-size: 15px;">&bull; Total Supply: 1,000,000,000 LQD</p>
-            <p style="color: #ff007f; font-weight: bold; font-size: 15px; margin-top: 6px;">&bull; Buy / Sell Tax: 0% (Pure Fair Launch)</p>
-        </div>
-
-        <div class="footer">
-            <p>NO FINANCIAL ADVICE. STIMULATED STRICTLY FOR THE LAUGHS AND CAT MEMES. &copy; 2026</p>
-        </div>
-
-    </div>
-
-    <script>
-        // Sincronização do Contador
-        let liveCount = 3421890;
-        setInterval(() => {
-            liveCount += Math.floor(Math.random() * 4) + 1;
-            document.getElementById('liquidation-count').innerText = liveCount.toLocaleString();
-            document.getElementById('liquidation-count2').innerText = liveCount.toLocaleString();
-        }, 800);
-
-        // Interatividade Melhorada: Choque Triplo (Shake + Flash + Som + Texto)
-        function generateDeDegenCope() {
-            const output = document.getElementById('copeOutput');
-            output.innerHTML = "Calculating the depth of your bankruptcy... ⏳";
-            
-            // Ativa Terramoto e Alarme Visual Vermelho de Emergência
-            document.body.classList.add('shake', 'flash-red');
-            
-            // Sintetizador Nativo para Áudio Retro de Impacto
-            try {
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(140, audioCtx.currentTime); 
-                gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.35);
-            } catch(e) {}
-
-            const excuses = [
-                "📉 REKT: 'It wasn't a mistake, it was a market maker stop-loss hunt targeting my exact $32 balance.'",
-                "🙀 CAT REKT: Your cat walked over the phone screen and clicked 100x Market Buy. Pure bad luck.",
-                "🐳 WHALE PLOT: A tier-1 whale wallet dumped $10M just to trigger your tiny $20 liquidation node.",
-                "🛢️ BARREL META: You executed a perfect entry on the local top. The chart inverted by spite. Welcome to the barrel.",
-                "🛑 COPE LEVEL 99: 'I am not down 98%, my investment is just performing an inverse retracement before the bounce.'",
-                "👻 EXCHANGE GLITCH: 'The app froze right when I wanted to close the position. Classic manipulation.'"
-            ];
-
-            setTimeout(() => {
-                // Desativa os efeitos visuais para estarem prontos para o próximo clique
-                document.body.classList.remove('shake', 'flash-red');
-                output.innerHTML = excuses[Math.floor(Math.random() * excuses.length)];
-            }, 450);
-        }
-
-        // Botão Fuga de Polegar
-        const trollBtn = document.getElementById('evasiveTrollBtn');
-        trollBtn.addEventListener('mouseover', relocateButton);
-        trollBtn.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            relocateButton();
-        });
-
-        function relocateButton() {
-            const maxX = window.innerWidth - trollBtn.offsetWidth - 30;
+            padding: 25px;
+            flex: 1 1 450px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             
