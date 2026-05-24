@@ -55,7 +55,7 @@
             padding: 15px;
         }
 
-        /* O TITULO NOVO: MUITO MAIS FIXE E CHAMATIVO (Muda de cor e brilha) */
+        /* TÍTULO QUE PISCA E MUDA DE COR SÓZINHO */
         .arcade-title-box {
             background: #111;
             border: 4px ridge #ff007f;
@@ -72,7 +72,7 @@
             text-shadow: 3px 3px 0px #000000;
         }
         
-        /* Animação ultra-viva de cores néon que não pesa no telemóvel */
+        /* Animação de cores néon leve */
         @keyframes megaNeonColor {
             0% { color: #00ffcc; text-shadow: 0 0 15px #00ffcc, 3px 3px 0px #000; }
             33% { color: #ff007f; text-shadow: 0 0 15px #ff007f, 3px 3px 0px #000; }
@@ -184,9 +184,11 @@
             from { box-shadow: 0 6px 0 #b37700, 0 0 10px rgba(255,255,0,0.3); }
             to { box-shadow: 0 6px 0 #b37700, 0 0 20px rgba(255,255,0,0.6); }
         }
-        .btn-four {
-            background: linear-gradient(135deg, #ff0055, #990000);
-            box-shadow: 0 6px 0 #550000;
+        .btn-pump {
+            background: linear-gradient(135deg, #00ffcc, #009977);
+            color: #000000;
+            text-shadow: none;
+            box-shadow: 0 6px 0 #005544;
         }
         .btn-x {
             background: linear-gradient(135deg, #00ccff, #0044cc);
@@ -234,7 +236,7 @@
 
     <div class="marquee-container">
         <div class="marquee-content">
-            🎰 DEGEN JACKPOT FEED: <span id="liq-count">3,421,890</span> PORTFOLIOS VAPORIZED TODAY &bull; $LQD ACTIVE EXTRA CHAOS META &bull; LAUNCHING LIVE ON FOUR.MEME &bull; 🎰
+            🎰 DEGEN JACKPOT FEED: <span id="liq-count">3,421,890</span> SOLANA WALLETS VAPORIZED TODAY &bull; STOP COPE, START PUMPING ON PUMP.FUN &bull; $LIQUD ACTIVE EXTRA CHAOS META &bull; 🎰
         </div>
     </div>
 
@@ -247,114 +249,5 @@
         <div class="slot-machine-container" id="machineShell">
             <div class="jackpot-badge">SLOT REKT!</div>
             <div class="slot-window">
-                <img src="1779396908205.png" alt="$LIQUD Mascot" class="logo-img" id="mascotLogo">
-            </div>
-            
-            <div class="arcade-screen" id="screenOutput">INSERT COIN OR SPIN FOR THE REKT VERDICT...</div>
-            
-            <button class="arcade-btn btn-spin" onclick="pullSlotLever()">🎰 PULL LEVER (SPIN) 🎰</button>
-        </div>
-
-        <div style="margin-bottom: 25px;">
-            <a href="https://four.meme/en" class="arcade-btn btn-four" target="_blank">Buy on Four.meme</a>
-            <a href="https://x.com/liqudCoin" class="arcade-btn btn-x" target="_blank">Follow Twitter / X</a>
-            <button class="arcade-btn btn-troll" id="evasiveTrollBtn">Claim Free Money</button>
-        </div>
-
-        <div class="arcade-card">
-            <h4>The Manifesto</h4>
-            <p>
-                "You researched the project for weeks. You read the whitepaper. You drew perfect support lines and Fibonacci retracements on the chart. You waited for the absolute perfect entry. You clicked buy with 100x leverage... and exactly 3 seconds later, you got liquidated by a $0.0001 wick.<br><br>
-                You are not alone. We are the official inverse indicator. $LIQUD doesn't promise the Moon. It just promises that if you go broke, you'll do it in good company and with a smile on your face."
-            </p>
-        </div>
-
-        <div class="arcade-card" style="border-color: #00ffcc;">
-            <h4>Barrel Economics</h4>
-            <p style="color: #00ff66; font-weight: bold; font-size: 16px; margin-bottom: 5px;">&bull; TOTAL SUPPLY: 1,000,000,000 LQD</p>
-            <p style="color: #ff007f; font-weight: bold; font-size: 16px;">&bull; FEES & TAXES: 0% (PURE DEGEN)</p>
-        </div>
-
-        <div class="footer">
-            <p>STRICTLY FOR THE MEMES. CHOOSE CHAOS. &copy; 2026</p>
-        </div>
-
-    </div>
-
-    <script>
-        // Contador Superior Real
-        let count = 3421890;
-        setInterval(() => {
-            count += Math.floor(Math.random() * 4) + 1;
-            document.getElementById('liq-count').innerText = count.toLocaleString();
-        }, 800);
-
-        // Interatividade Slot Machine
-        let isSpinning = false;
-        function pullSlotLever() {
-            if (isSpinning) return;
-            isSpinning = true;
-
-            const mascot = document.getElementById('mascotLogo');
-            const screen = document.getElementById('screenOutput');
-            const shell = document.getElementById('machineShell');
-
-            mascot.classList.remove('jackpot-bounce');
-            shell.style.borderColor = '#ffaa00';
-            screen.innerText = "ROLLING THE ORDERBOOK... 🎲";
-
-            // Áudio retro nativo
-            try {
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.type = 'square';
-                osc.frequency.setValueAtTime(300, audioCtx.currentTime);
-                osc.frequency.linearRampToValueAtTime(150, audioCtx.currentTime + 0.4);
-                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.4);
-            } catch(e) {}
-
-            const responses = [
-                "❌ LIQUIDATED! Your balance just transitioned into pure cosmic radiation.",
-                "🚨 100% REKT: Your cats are officially planning to find a better owner.",
-                "🛢️ BARREL META: You bought the exact top. Welcome to the barrel community.",
-                "🕯️ SCAM WICKED: Vaporized by a 1-second candle. Absolute legend!"
-            ];
-
-            setTimeout(() => {
-                isSpinning = false;
-                mascot.classList.add('jackpot-bounce');
-                shell.style.borderColor = '#00ffcc';
-                screen.innerHTML = responses[Math.floor(Math.random() * responses.length)];
-            }, 800);
-        }
-
-        // Botão Troll Fugitivo Mobile
-        const trollBtn = document.getElementById('evasiveTrollBtn');
-        trollBtn.addEventListener('mouseover', relocateButton);
-        trollBtn.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            relocateButton();
-        });
-
-        function relocateButton() {
-            const maxX = window.innerWidth - trollBtn.offsetWidth - 30;
-            const maxY = window.innerHeight - trollBtn.offsetHeight - 30;
-            const newX = Math.max(15, Math.random() * maxX);
-            const newY = Math.max(60, Math.random() * maxY);
-            
-            trollBtn.style.position = 'fixed';
-            trollBtn.style.left = newX + 'px';
-            trollBtn.style.top = newY + 'px';
-            trollBtn.style.zIndex = "9999";
-        }
-        trollBtn.addEventListener('click', () => {
-            alert("❌ CASINO ERROR: Wallet balance too thin. Go buy $LQD first!");
-        });
-    </script>
-</body>
-</html>
+                <img src="1779396908205.png" alt="$LIQUD Mascot" class="logo-img" id="
+                    
