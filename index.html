@@ -3,46 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$LIQUD - Maximum Chaos Degen Arcade</title>
+    <title>$LIQUD - Maximum Chaos Rekt Simulator</title>
     <style>
-        /* Base Retro-Futurista Néon */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
         body {
-            background-color: #05050a;
-            /* Grelha Cyberpunk super leve */
-            background-image: 
-                linear-gradient(rgba(255, 0, 128, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 0, 128, 0.05) 1px, transparent 1px);
-            background-size: 20px 20px;
+            background-color: #0b0b0c;
             color: #ffffff;
-            font-family: 'Impact', 'Arial Black', sans-serif;
-            padding-top: 50px;
+            font-family: Arial, sans-serif;
+            padding-top: 55px;
             text-align: center;
         }
 
-        /* Marquise Superior Casino */
+        /* Marquise Superior Vermelha */
         .marquee-container {
-            background: linear-gradient(90deg, #ff007f, #990000);
-            border-bottom: 3px solid #ffff00;
+            background-color: #990000;
+            border-bottom: 2px solid #ff4a4a;
             color: #ffffff;
-            padding: 6px 0;
-            font-size: 12px;
+            padding: 8px 0;
+            font-size: 13px;
             font-weight: bold;
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.5);
         }
         .marquee-content {
             display: inline-block;
             white-space: nowrap;
-            animation: marqueeEffect 12s linear infinite;
+            animation: marqueeEffect 15s linear infinite;
         }
         @keyframes marqueeEffect {
             0% { transform: translate3d(0, 0, 0); }
@@ -50,185 +43,149 @@
         }
 
         .main-wrapper {
-            max-width: 440px;
+            max-width: 460px;
             margin: 0 auto;
             padding: 15px;
         }
 
-        /* TÍTULO QUE PISCA E MUDA DE COR SÓZINHO */
-        .arcade-title-box {
-            background: #111;
-            border: 4px ridge #ff007f;
-            border-radius: 16px;
-            padding: 15px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 25px rgba(255, 0, 127, 0.4);
+        /* Letreiro do Topo */
+        .fire-banner {
+            background: linear-gradient(180deg, #141419 0%, #000000 100%);
+            border-radius: 12px;
+            border: 3px solid #ff4a4a;
+            padding: 20px 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(255, 74, 74, 0.4);
         }
-        .arcade-title-box h1 {
-            font-size: 55px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            animation: megaNeonColor 1.5s infinite alternate;
-            text-shadow: 3px 3px 0px #000000;
+        .fire-banner h1 {
+            font-size: 42px;
+            font-family: 'Impact', Arial, sans-serif;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px #ff4a4a, 0 0 20px #ff0000;
         }
-        
-        /* Animação de cores néon leve */
-        @keyframes megaNeonColor {
-            0% { color: #00ffcc; text-shadow: 0 0 15px #00ffcc, 3px 3px 0px #000; }
-            33% { color: #ff007f; text-shadow: 0 0 15px #ff007f, 3px 3px 0px #000; }
-            66% { color: #ffff00; text-shadow: 0 0 15px #ffff00, 3px 3px 0px #000; }
-            100% { color: #ff4a4a; text-shadow: 0 0 15px #ff4a4a, 3px 3px 0px #000; }
+        .fire-banner p {
+            font-size: 11px;
+            color: #ffff00;
+            font-weight: bold;
+            margin-top: 5px;
         }
 
-        /* CAIXA DE SLOT MACHINE INTERATIVA */
-        .slot-machine-container {
-            background: linear-gradient(145deg, #1a1a24, #0f0f15);
-            border: 5px solid #ffaa00;
-            border-radius: 24px;
-            padding: 25px 15px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 30px rgba(255, 170, 0, 0.5), inset 0 0 20px #000;
+        /* Caixa do Gato Oficial */
+        .logo-box {
+            background: #141419;
+            border: 3px solid #ffaa00;
+            border-radius: 16px;
+            padding: 25px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(255, 170, 0, 0.2);
             position: relative;
-            overflow: hidden;
-        }
-        .slot-window {
-            background: #000;
-            border: 4px solid #333;
-            border-radius: 50%;
-            width: 190px;
-            height: 190px;
-            margin: 0 auto 15px auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            box-shadow: inset 0 0 15px rgba(255,255,255,0.1);
         }
         .logo-img {
             width: 100%;
-            height: 100%;
+            max-width: 190px;
+            height: auto;
             border-radius: 50%;
-            object-fit: cover;
-            transition: transform 0.1s ease;
+            border: 5px solid #ffaa00;
         }
-        .jackpot-bounce {
-            animation: bounceMascot 0.4s ease-out 3;
-        }
-        @keyframes bounceMascot {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15) rotate(5deg); }
-        }
-        .jackpot-badge {
+        .jackpot-tag {
             position: absolute;
             top: -12px;
-            left: 15px;
+            left: 50%;
+            transform: translateX(-50%);
             background: #ffff00;
             color: #000;
-            padding: 3px 8px;
+            padding: 4px 12px;
             font-weight: bold;
-            font-size: 11px;
-            border-radius: 4px;
+            font-size: 13px;
+            border-radius: 5px;
             box-shadow: 2px 2px 0 #000;
-            font-family: 'Impact', sans-serif;
+            font-family: 'Impact', Arial, sans-serif;
         }
 
-        /* Letreiro Dinâmico de Veredicto */
-        .arcade-screen {
-            background-color: #050508;
-            border: 3px solid #00ffcc;
-            border-radius: 12px;
-            padding: 12px;
-            font-family: monospace;
-            font-size: 14px;
-            font-weight: bold;
-            color: #00ffcc;
-            min-height: 70px;
+        /* Caixa de Resposta do Clique */
+        .verdict-box {
+            background-color: #0b0b0c;
+            border: 2px dashed #ff4a4a;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            min-height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: inset 0 0 10px rgba(0, 255, 204, 0.3);
-            margin-bottom: 15px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #ffff00;
         }
 
-        /* Botões Estilo Jogo de Arcada */
-        .arcade-btn {
+        /* Menu de Botões Robustos */
+        .buttons-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .neon-btn {
             display: block;
-            width: 100%;
             padding: 16px;
-            border-radius: 16px;
+            border-radius: 12px;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             text-transform: uppercase;
             color: #ffffff;
             border: none;
             cursor: pointer;
-            margin-bottom: 15px;
+            font-family: 'Impact', Arial, sans-serif;
             letter-spacing: 1px;
-            text-shadow: 2px 2px 0px #000;
-            box-shadow: 0 6px 0 #000;
-            transition: transform 0.05s;
         }
-        .arcade-btn:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0 #000;
-        }
-        .btn-spin {
-            background: linear-gradient(135deg, #ffff00, #ffaa00);
-            color: #000000;
-            text-shadow: none;
-            box-shadow: 0 6px 0 #b37700;
-            animation: pulseGlow 1s infinite alternate;
-        }
-        @keyframes pulseGlow {
-            from { box-shadow: 0 6px 0 #b37700, 0 0 10px rgba(255,255,0,0.3); }
-            to { box-shadow: 0 6px 0 #b37700, 0 0 20px rgba(255,255,0,0.6); }
-        }
+        /* Cor de Destaque Verde para o Pump.fun */
         .btn-pump {
-            background: linear-gradient(135deg, #00ffcc, #009977);
+            background-color: #00ffcc;
             color: #000000;
-            text-shadow: none;
-            box-shadow: 0 6px 0 #005544;
+            border: 3px solid #ffffff;
+            box-shadow: 0 0 12px #00ffcc;
         }
         .btn-x {
-            background: linear-gradient(135deg, #00ccff, #0044cc);
-            box-shadow: 0 6px 0 #002266;
+            background-color: #001122;
+            color: #00ffff;
+            border: 3px solid #00ffff;
         }
         .btn-troll {
-            background: linear-gradient(135deg, #00ff66, #006622);
-            box-shadow: 0 6px 0 #003311;
+            background: linear-gradient(180deg, #ff007f, #800040);
+            color: #ffff00;
+            border: 2px solid #ff007f;
         }
 
-        /* Painéis de Conteúdo */
-        .arcade-card {
-            background: rgba(17, 17, 24, 0.9);
-            border: 3px solid #ff007f;
-            border-radius: 16px;
+        /* Painéis de Texto */
+        .info-card {
+            background-color: #141419;
+            border: 2px solid #29292e;
+            border-radius: 12px;
             padding: 20px;
             margin-bottom: 15px;
             text-align: left;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
-        .arcade-card h4 {
-            font-size: 24px;
-            color: #ffff00;
+        .info-card h4 {
+            font-size: 22px;
+            color: #ff4a4a;
             margin-bottom: 10px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            font-family: 'Impact', Arial, sans-serif;
         }
-        .arcade-card p {
-            font-family: Arial, sans-serif;
+        .info-card p {
             font-size: 14px;
             line-height: 1.6;
-            color: #e1e1e6;
+            color: #d1d1d6;
         }
 
         .footer {
             font-size: 11px;
-            color: #555566;
+            color: #7c7c8a;
             margin-top: 30px;
-            border-top: 2px dashed #333;
             padding-top: 15px;
+            border-top: 1px solid #29292e;
         }
     </style>
 </head>
@@ -236,18 +193,101 @@
 
     <div class="marquee-container">
         <div class="marquee-content">
-            🎰 DEGEN JACKPOT FEED: <span id="liq-count">3,421,890</span> SOLANA WALLETS VAPORIZED TODAY &bull; STOP COPE, START PUMPING ON PUMP.FUN &bull; $LIQUD ACTIVE EXTRA CHAOS META &bull; 🎰
+            ⚠️ LIVE FEED: <span id="liq-count">3,421,890</span> SOLANA WALLETS LIQUIDATED TODAY &bull; $LQD ACTIVE &bull; STOP COPE, START PUMPING ON PUMP.FUN &bull; ⚠️
         </div>
     </div>
 
     <div class="main-wrapper">
         
-        <div class="arcade-title-box">
-            <h1>$LIQUD</h1>
+        <div class="fire-banner">
+            <h1>📉 $LIQUD 📉</h1>
+            <p>(Ticker: LQD)</p>
         </div>
 
-        <div class="slot-machine-container" id="machineShell">
-            <div class="jackpot-badge">SLOT REKT!</div>
-            <div class="slot-window">
-                <img src="1779396908205.png" alt="$LIQUD Mascot" class="logo-img" id="
-                    
+        <div class="logo-box">
+            <div class="jackpot-tag">JACKPOT REKT!</div>
+            <img src="1779396908205.png" alt="$LIQUD Logo" class="logo-img">
+            
+            <div class="verdict-box" id="verdictOutput">Ready to diagnose your bankruptcy...</div>
+            
+            <button class="neon-btn btn-pump" style="margin-top: 15px; width: 100%; font-size: 15px; padding: 12px; background: linear-gradient(135deg, #ffff00, #ffaa00); color: #000; border: 2px solid #fff;" onclick="checkWalletVerdict()">
+                ⚡ SPIN WALLET VERDICT ⚡
+            </button>
+        </div>
+
+        <div class="buttons-menu">
+            <a href="https://pump.fun" class="neon-btn btn-pump" target="_blank">$LIQUD on Pump.fun</a>
+            <a href="https://x.com/liqudCoin" class="neon-btn btn-x" target="_blank">Follow on Twitter/X</a>
+            <button class="neon-btn btn-troll" id="evasiveTrollBtn">Win Free Money</button>
+        </div>
+
+        <div class="info-card">
+            <h4>The Manifesto</h4>
+            <p>
+                "You researched the project for weeks. You read the whitepaper. You drew perfect support lines and Fibonacci retracements on the chart. You waited for the absolute perfect entry. You clicked buy with 100x leverage... and exactly 3 seconds later, you got liquidated by a $0.0001 wick.<br><br>
+                You are not alone. We are the official inverse indicator. <strong>$LIQUD</strong> doesn't promise the Moon. It just promises that if you go broke, you'll do it in good company and with a smile on your face."
+            </p>
+        </div>
+
+        <div class="info-card">
+            <h4>Tokenomics</h4>
+            <p style="color: #00ff66; font-weight: bold;">&bull; Total Supply: 1,000,000,000 LQD</p>
+            <p style="color: #ff007f; font-weight: bold; margin-top: 5px;">&bull; Launch Mechanics: 100% Fair Launch (Pump.fun)</p>
+        </div>
+
+        <div class="footer">
+            <p>NO FINANCIAL ADVICE. STRICTLY FOR THE MEMES. &copy; 2026</p>
+        </div>
+
+    </div>
+
+    <script>
+        // Contador Superior Animado
+        let count = 3421890;
+        setInterval(() => {
+            count += Math.floor(Math.random() * 3) + 1;
+            document.getElementById('liq-count').innerText = count.toLocaleString();
+        }, 900);
+
+        // Função de Veredicto Adaptada para Solana
+        function checkWalletVerdict() {
+            const output = document.getElementById('verdictOutput');
+            output.innerText = "Scanning your SOL address... ⏳";
+            
+            const outcomes = [
+                "🚨 100% REKT: Your cats are officially planning to look for a better owner.",
+                "🔥 CRITICAL REKT: Vaporized by a 1-second wick on 100x leverage!",
+                "🛢️ BARREL META: You bought the exact local top. Welcome home to the barrel.",
+                "💸 LIQUIDATED: Your SOL balance just transitioned into pure cosmic radiation."
+            ];
+
+            setTimeout(() => {
+                output.innerText = outcomes[Math.floor(Math.random() * outcomes.length)];
+            }, 600);
+        }
+
+        // Botão Troll que foge no telemóvel
+        const trollBtn = document.getElementById('evasiveTrollBtn');
+        trollBtn.addEventListener('mouseover', relocateButton);
+        trollBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            relocateButton();
+        });
+
+        function relocateButton() {
+            const maxX = window.innerWidth - trollBtn.offsetWidth - 30;
+            const maxY = window.innerHeight - trollBtn.offsetHeight - 30;
+            const newX = Math.max(15, Math.random() * maxX);
+            const newY = Math.max(60, Math.random() * maxY);
+            
+            trollBtn.style.position = 'fixed';
+            trollBtn.style.left = newX + 'px';
+            trollBtn.style.top = newY + 'px';
+            trollBtn.style.zIndex = "9999";
+        }
+        trollBtn.addEventListener('click', () => {
+            alert("❌ ERROR: Wallet empty. Buy $LIQUD on Pump.fun first!");
+        });
+    </script>
+</body>
+</html>
